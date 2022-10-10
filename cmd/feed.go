@@ -1,0 +1,156 @@
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+	"os"
+	"path/filepath"
+	"strings"
+	"time"
+
+	"github.com/mmcdole/gofeed"
+	"github.com/ohnishi/feed/common"
+	"github.com/pkg/errors"
+)
+
+type subscription struct {
+	Title   string    `json:"title"`
+	URL     string    `json:"url"`
+	Fetched time.Time `json:"fetched"`
+}
+
+func feedToMail(dest string, retry int) error {
+	subscriptions, err := readSubscriptions(filepath.Join(dest, "fetchinfo.json"))
+	if err != nil {
+		return err
+	}
+
+	var bodys []string
+	fp := gofeed.NewParser()
+	for i, subscription := range subscriptions {
+		var latest time.Time
+		var feed *gofeed.Feed
+		for cnt := 1; cnt <= retry; cnt++ {
+			feed, err = fp.ParseURL(subscription.URL)
+			if err == nil {
+				break
+			} else if cnt == retry {
+				return err
+			}
+		}
+
+		bodys = append(bodys, subscription.Title)
+		for _, item := range feed.Items {
+			published, err := parseLocal(time.RFC3339, item.Published)
+			if err != nil {
+				return err
+			}
+
+			if latest.IsZero() {
+				latest = published
+			}
+
+			if subscription.Fetched.Before(published) {
+				bodys = append(bodys, "  - "+item.Title)
+				bodys = append(bodys, "    - "+item.Link)
+			}
+		}
+		bodys = append(bodys, []string{"", ""}...)
+		if subscription.Fetched.Before(latest) {
+			subscriptions[i].Fetched = latest
+		}
+	}
+
+	err = common.MailNotify(strings.Join(bodys, "\n"))
+	if err != nil {
+		return err
+	}
+
+	return writeSubscription(filepath.Join(dest, "fetchinfo.json"), subscriptions)
+}
+
+func writeSubscription(path string, subscriptions []subscription) error {
+	if len(subscriptions) == 0 {
+		return nil
+	}
+	f, err := createOutFile(path)
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+
+	for _, subscription := range subscriptions {
+
+		err = appendOutFile(f, subscription)
+		if err != nil {
+			return err
+		}
+	}
+	if err := f.Sync(); err != nil {
+		return errors.Wrap(err, "failed to sync file")
+	}
+	return nil
+}
+
+func createOutFile(path string) (*os.File, error) {
+	dir := filepath.Dir(path)
+	err := os.MkdirAll(dir, os.ModePerm)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to create output directory: %s", dir)
+	}
+	f, err := os.OpenFile(path, os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0600)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to open file: %s", path)
+	}
+	return f, nil
+}
+
+func appendOutFile(f *os.File, v interface{}) error {
+	jsonl, err := toJSON(v)
+	if err != nil {
+		return err
+	}
+	if _, err := f.Write([]byte(jsonl)); err != nil {
+		return errors.Wrapf(err, "failed to write line: %s", jsonl)
+	}
+	return nil
+}
+func toJSON(r interface{}) (string, error) {
+	jsonStr, err := json.Marshal(r)
+	if err != nil {
+		return "", errors.Wrapf(err, "could not marshal: %v", r)
+	}
+	return fmt.Sprintf("%s\n", jsonStr), nil
+}
+
+func readSubscriptions(path string) ([]subscription, error) {
+	f, err := os.Open(path)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to open file: %s", path)
+	}
+	defer f.Close()
+
+	var subscriptions []subscription
+	d := json.NewDecoder(f)
+	for d.More() {
+		var s subscription
+		if err := d.Decode(&s); err != nil {
+			return nil, errors.Wrap(err, "could not unmarshal subscription")
+		}
+		subscriptions = append(subscriptions, s)
+	}
+	return subscriptions, nil
+}
+
+func parseLocal(layout string, value string) (t time.Time, err error) {
+	for _, layout := range []string{time.RFC1123, time.RFC3339} {
+		t, err = time.ParseInLocation(layout, value, time.Local)
+		if err == nil {
+			break
+		}
+	}
+	if err != nil {
+		return time.Time{}, errors.Wrapf(err, "cannot parse as %q", time.Local)
+	}
+	return t, nil
+}
