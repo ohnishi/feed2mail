@@ -11,6 +11,7 @@ var subscriptions = []subscription{
 	{Title: "Publickey", URL: "https://www.publickey1.jp/atom.xml", Fetched: time.Time{}},
 	{Title: "まめきちまめこニートの日常", URL: "https://mamekichimameko.blog.jp/index.rdf", Fetched: time.Time{}},
 	{Title: "はてなブックマーク - 人気エントリー - テクノロジー", URL: "https://b.hatena.ne.jp/hotentry/it.rss", Fetched: time.Time{}},
+	{Title: "たぱぞうの米国株投資", URL: "https://www.americakabu.com/feed", Fetched: time.Time{}},
 }
 
 func resetSubscriptions(dest string) error {
