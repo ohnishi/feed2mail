@@ -41,15 +41,17 @@ func feedToMail(dest string, retry int) error {
 
 		bodys = append(bodys, subscription.Title)
 		for _, item := range feed.Items {
-			published, err := parseLocal(time.RFC3339, item.Published)
+			published, err := parseLocal(item.Published)
+			// fmt.Println(published, err)
 			if err != nil {
 				return err
 			}
 
-			if latest.IsZero() {
+			if latest.Before(published) {
 				latest = published
 			}
 
+			// fmt.Println(subscription.Fetched.Before(published), subscription.Fetched, published)
 			if subscription.Fetched.Before(published) {
 				bodys = append(bodys, "  - "+item.Title)
 				bodys = append(bodys, "    - "+item.Link)
@@ -142,7 +144,7 @@ func readSubscriptions(path string) ([]subscription, error) {
 	return subscriptions, nil
 }
 
-func parseLocal(layout string, value string) (t time.Time, err error) {
+func parseLocal(value string) (t time.Time, err error) {
 	for _, layout := range []string{time.RFC1123, time.RFC3339} {
 		t, err = time.ParseInLocation(layout, value, time.Local)
 		if err == nil {
