@@ -145,7 +145,7 @@ func readSubscriptions(path string) ([]subscription, error) {
 }
 
 func parseLocal(value string) (t time.Time, err error) {
-	for _, layout := range []string{time.RFC1123, time.RFC3339} {
+	for _, layout := range []string{time.RFC1123, time.RFC3339, time.RFC1123Z} {
 		t, err = time.ParseInLocation(layout, value, time.Local)
 		if err == nil {
 			break
