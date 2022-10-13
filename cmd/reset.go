@@ -14,6 +14,7 @@ var subscriptions = []subscription{
 	{Title: "たぱぞうの米国株投資", URL: "https://www.americakabu.com/feed", Fetched: time.Time{}},
 	{Title: "manablog", URL: "https://mblog.com/rss", Fetched: time.Time{}},
 	{Title: "Rebuild", URL: "https://feeds.rebuild.fm/rebuildfm", Fetched: time.Time{}},
+	{Title: "くるねこ大和", URL: "https://blog.goo.ne.jp/kuru0214/rss2.xml", Fetched: time.Time{}},
 }
 
 func resetSubscriptions(dest string) error {
