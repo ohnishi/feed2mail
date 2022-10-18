@@ -15,6 +15,9 @@ var subscriptions = []subscription{
 	{Title: "manablog", URL: "https://mblog.com/rss", Fetched: time.Time{}},
 	{Title: "Rebuild", URL: "https://feeds.rebuild.fm/rebuildfm", Fetched: time.Time{}},
 	{Title: "くるねこ大和", URL: "https://blog.goo.ne.jp/kuru0214/rss2.xml", Fetched: time.Time{}},
+	{Title: "CoinPost", URL: "https://coinpost.jp/rss.xml", Fetched: time.Time{}},
+	{Title: "コインテレグラフ", URL: "https://jp.cointelegraph.com/rss", Fetched: time.Time{}},
+	{Title: "aucfan times", URL: "https://aucfan.com/times/feed", Fetched: time.Time{}},
 }
 
 func resetSubscriptions(dest string) error {
