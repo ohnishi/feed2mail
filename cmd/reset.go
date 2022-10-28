@@ -6,17 +6,12 @@ import (
 )
 
 var subscriptions = []subscription{
-	{Title: "梅屋敷商店街のランダム・ウォーカー", URL: "http://randomwalker.blog19.fc2.com/?xml", Fetched: time.Time{}},
-	{Title: "Zennのトレンド", URL: "https://zenn.dev/feed", Fetched: time.Time{}},
-	{Title: "Publickey", URL: "https://www.publickey1.jp/atom.xml", Fetched: time.Time{}},
 	{Title: "まめきちまめこニートの日常", URL: "https://mamekichimameko.blog.jp/index.rdf", Fetched: time.Time{}},
-	{Title: "はてなブックマーク - 人気エントリー - テクノロジー", URL: "https://b.hatena.ne.jp/hotentry/it.rss", Fetched: time.Time{}},
-	{Title: "たぱぞうの米国株投資", URL: "https://www.americakabu.com/feed", Fetched: time.Time{}},
-	{Title: "manablog", URL: "https://mblog.com/rss", Fetched: time.Time{}},
-	{Title: "Rebuild", URL: "https://feeds.rebuild.fm/rebuildfm", Fetched: time.Time{}},
 	{Title: "くるねこ大和", URL: "https://blog.goo.ne.jp/kuru0214/rss2.xml", Fetched: time.Time{}},
-	{Title: "CoinPost", URL: "https://coinpost.jp/rss.xml", Fetched: time.Time{}},
-	{Title: "コインテレグラフ", URL: "https://jp.cointelegraph.com/rss", Fetched: time.Time{}},
+	{Title: "梅屋敷商店街のランダム・ウォーカー", URL: "http://randomwalker.blog19.fc2.com/?xml", Fetched: time.Time{}},
+	{Title: "はてなブックマーク - 人気エントリー - テクノロジー", URL: "https://b.hatena.ne.jp/hotentry/it.rss", Fetched: time.Time{}},
+	{Title: "Publickey", URL: "https://www.publickey1.jp/atom.xml", Fetched: time.Time{}},
+	{Title: "Zennのトレンド", URL: "https://zenn.dev/feed", Fetched: time.Time{}},
 }
 
 func resetSubscriptions(dest string) error {
