@@ -12,6 +12,7 @@ var subscriptions = []subscription{
 	{Title: "はてなブックマーク - 人気エントリー - テクノロジー", URL: "https://b.hatena.ne.jp/hotentry/it.rss", Fetched: time.Time{}},
 	{Title: "Publickey", URL: "https://www.publickey1.jp/atom.xml", Fetched: time.Time{}},
 	{Title: "Zennのトレンド", URL: "https://zenn.dev/feed", Fetched: time.Time{}},
+	{Title: "Rebuild", URL: "https://feeds.rebuild.fm/rebuildfm", Fetched: time.Time{}},
 }
 
 func resetSubscriptions(dest string) error {
