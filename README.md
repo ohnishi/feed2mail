@@ -4,5 +4,6 @@ aria2c --seed-time=0 'magnet:?xt=urn:btih:015cc30f1e6b3d1e34069d33f09f8a2f252134
 cd /Users/ohnishi/home/go/src/github.com/ohnishi/feed
 go mod tidy
 
-go run github.com/ohnishi/feed/cmd feed
+
 go run github.com/ohnishi/feed/cmd reset
+go run github.com/ohnishi/feed/cmd feed
