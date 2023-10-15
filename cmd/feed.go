@@ -20,7 +20,7 @@ type subscription struct {
 }
 
 func feedToMail(dest string, retry int) error {
-	subscriptions, err := readSubscriptions(filepath.Join(dest, "fetchinfo.json"))
+	subscriptions, err := readSubscriptions(filepath.Join(dest, "fetchinfo.jsonl"))
 	if err != nil {
 		return err
 	}
@@ -68,7 +68,7 @@ func feedToMail(dest string, retry int) error {
 		return err
 	}
 
-	return writeSubscription(filepath.Join(dest, "fetchinfo.json"), subscriptions)
+	return writeSubscription(filepath.Join(dest, "fetchinfo.jsonl"), subscriptions)
 }
 
 func writeSubscription(path string, subscriptions []subscription) error {
