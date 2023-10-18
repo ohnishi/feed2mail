@@ -126,6 +126,10 @@ func toJSON(r interface{}) (string, error) {
 }
 
 func readSubscriptions(path string) ([]subscription, error) {
+	if !FileExists(path) {
+		return nil, nil
+	}
+
 	f, err := os.Open(path)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to open file: %s", path)
@@ -155,4 +159,13 @@ func parseLocal(value string) (t time.Time, err error) {
 		return time.Time{}, errors.Wrapf(err, "cannot parse as %q", time.Local)
 	}
 	return t, nil
+}
+
+// FileExists はファイルが存在するかどうかを確認します。
+func FileExists(filename string) bool {
+	_, err := os.Stat(filename)
+	if os.IsNotExist(err) {
+		return false
+	}
+	return err == nil
 }
