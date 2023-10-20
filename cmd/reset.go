@@ -16,6 +16,7 @@ var subscriptions = []subscription{
 	{Title: "独立を楽しくするブログ", URL: "https://www.ex-it-blog.com/feed/", Fetched: time.Time{}},
 	{Title: "PCまなぶ", URL: "https://pcmanabu.com/feed/", Fetched: time.Time{}},
 	{Title: "ログミーTech", URL: "https://logmi.jp/feed/public-tech.xml", Fetched: time.Time{}},
+	{Title: "ガジェラン", URL: "https://gadgelaun.com/?feed=rss2", Fetched: time.Time{}},
 }
 
 func resetSubscriptions(dest string) error {
