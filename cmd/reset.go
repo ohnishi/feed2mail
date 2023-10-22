@@ -17,6 +17,7 @@ var subscriptions = []subscription{
 	{Title: "PCまなぶ", URL: "https://pcmanabu.com/feed/", Fetched: time.Time{}},
 	{Title: "ログミーTech", URL: "https://logmi.jp/feed/public-tech.xml", Fetched: time.Time{}},
 	{Title: "ガジェラン", URL: "https://gadgelaun.com/?feed=rss2", Fetched: time.Time{}},
+	{Title: "eBayで越境EC！起業・副業・新規事業のはじめ方", URL: "http://rssblog.ameba.jp/lyonde7/rss20.xml", Fetched: time.Time{}},
 }
 
 func resetSubscriptions(dest string) error {
