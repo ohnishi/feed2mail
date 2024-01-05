@@ -13,15 +13,19 @@ var subscriptions = []subscription{
 	{Title: "Zennのトレンド", URL: "https://zenn.dev/feed", Fetched: time.Time{}},
 	{Title: "はてなブックマーク", URL: "https://b.hatena.ne.jp/hotentry/it.rss", Fetched: time.Time{}},
 	{Title: "CiLEL", URL: "https://cilel.jp/feed/", Fetched: time.Time{}},
-	{Title: "独立を楽しくするブログ", URL: "https://www.ex-it-blog.com/feed/", Fetched: time.Time{}},
-	{Title: "PCまなぶ", URL: "https://pcmanabu.com/feed/", Fetched: time.Time{}},
 	{Title: "ログミーTech", URL: "https://logmi.jp/feed/public-tech.xml", Fetched: time.Time{}},
 	{Title: "ガジェラン", URL: "https://gadgelaun.com/?feed=rss2", Fetched: time.Time{}},
-	{Title: "eBayで越境EC！起業・副業・新規事業のはじめ方", URL: "http://rssblog.ameba.jp/lyonde7/rss20.xml", Fetched: time.Time{}},
+	{Title: "IIJ Engineers Blog", URL: "https://eng-blog.iij.ad.jp/feed", Fetched: time.Time{}},
+	{Title: "Money Forward Developers Blog", URL: "https://moneyforward-dev.jp/feed", Fetched: time.Time{}},
 }
 
 func resetSubscriptions(dest string) error {
 	filePath := filepath.Join(dest, "fetchinfo.jsonl")
+
+	if !checkModTimeSince(filePath) {
+		return nil
+	}
+
 	oldSubscriptions, err := readSubscriptions(filePath)
 	if err != nil {
 		return err

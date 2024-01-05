@@ -18,5 +18,5 @@ go run github.com/ohnishi/feed/cmd feed
 ```
 PATH="/usr/local/bin:/usr/bin:/bin:$HOME/go/bin"
 
-0 19 * * * sh $HOME/go/src/github.com/ohnishi/feed/bin/feed.sh > $HOME/log/feed.log
+0 * * * * sh $HOME/home/go/src/github.com/ohnishi/feed/bin/feed.sh > $HOME/log/feed.log
 ```

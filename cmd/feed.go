@@ -20,7 +20,13 @@ type subscription struct {
 }
 
 func feedToMail(dest string, retry int) error {
-	subscriptions, err := readSubscriptions(filepath.Join(dest, "fetchinfo.jsonl"))
+	filePath := filepath.Join(dest, "fetchinfo.jsonl")
+
+	if !checkModTimeSince(filePath) {
+		return nil
+	}
+
+	subscriptions, err := readSubscriptions(filePath)
 	if err != nil {
 		return err
 	}

@@ -3,6 +3,7 @@ package main
 import (
 	"os"
 	"path/filepath"
+	"time"
 
 	"github.com/spf13/cobra"
 )
@@ -59,4 +60,20 @@ func main() {
 	if err := rootCmd.Execute(); err != nil {
 		panic(err)
 	}
+}
+
+func checkModTimeSince(path string) bool {
+	info, err := os.Stat(path)
+	if os.IsNotExist(err) {
+		return false
+	}
+
+	nowHour := time.Now().Hour()
+	modHour := info.ModTime().Hour()
+
+	if nowHour >= 19 && (modHour < 19 || modHour > nowHour) {
+		return true
+	}
+
+	return false
 }
