@@ -71,7 +71,7 @@ func checkModTimeSince(path string) bool {
 	nowHour := time.Now().Hour()
 	modHour := info.ModTime().Hour()
 
-	if nowHour >= 19 && (modHour < 19 || modHour > nowHour) {
+	if nowHour >= 19 && (modHour <= 19 || modHour > nowHour) {
 		return true
 	}
 
