@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+	"os"
 	"path/filepath"
 	"time"
 )
@@ -22,7 +24,7 @@ var subscriptions = []subscription{
 func resetSubscriptions(dest string) error {
 	filePath := filepath.Join(dest, "fetchinfo.jsonl")
 
-	if !checkModTimeSince(filePath) {
+	if !checkResetModTimeSince(filePath) {
 		return nil
 	}
 
@@ -47,4 +49,24 @@ func resetSubscriptions(dest string) error {
 	}
 
 	return writeSubscription(filePath, newSubscriptions)
+}
+
+func checkResetModTimeSince(path string) bool {
+	info, err := os.Stat(path)
+	if os.IsNotExist(err) {
+		return false
+	}
+
+	if time.Since(info.ModTime()).Hours() >= 24 {
+		return true
+	}
+
+	nowHour := time.Now().Hour()
+	modHour := info.ModTime().Hour()
+	fmt.Println("aaaaaaa", time.Since(info.ModTime()).Hours())
+	if nowHour >= 19 && (modHour <= 19 || modHour > nowHour) {
+		return true
+	}
+
+	return false
 }

@@ -22,7 +22,7 @@ type subscription struct {
 func feedToMail(dest string, retry int) error {
 	filePath := filepath.Join(dest, "fetchinfo.jsonl")
 
-	if !checkModTimeSince(filePath) {
+	if !checkFeedModTimeSince(filePath) {
 		return nil
 	}
 
@@ -174,4 +174,13 @@ func FileExists(filename string) bool {
 		return false
 	}
 	return err == nil
+}
+
+func checkFeedModTimeSince(path string) bool {
+	info, err := os.Stat(path)
+	if os.IsNotExist(err) {
+		return false
+	}
+
+	return time.Since(info.ModTime()).Minutes() == 0
 }
