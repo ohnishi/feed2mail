@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"os"
 	"path/filepath"
 	"time"
@@ -63,7 +62,7 @@ func checkResetModTimeSince(path string) bool {
 
 	nowHour := time.Now().Hour()
 	modHour := info.ModTime().Hour()
-	fmt.Println("aaaaaaa", time.Since(info.ModTime()).Hours())
+	// fmt.Println("aaaaaaa", time.Since(info.ModTime()).Hours())
 	if nowHour >= 19 && (modHour <= 19 || modHour > nowHour) {
 		return true
 	}

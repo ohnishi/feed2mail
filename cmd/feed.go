@@ -181,6 +181,6 @@ func checkFeedModTimeSince(path string) bool {
 	if os.IsNotExist(err) {
 		return false
 	}
-
-	return time.Since(info.ModTime()).Minutes() == 0
+	// fmt.Println(time.Since(info.ModTime()).Minutes())
+	return time.Since(info.ModTime()).Minutes() < 1
 }
