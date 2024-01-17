@@ -16,7 +16,8 @@ go run github.com/ohnishi/feed/cmd feed
 
 ### cron 設定
 ```
-PATH="/usr/local/bin:/usr/bin:/bin:$HOME/go/bin"
+GOPATH=/Users/ohnishi/home/go
+PATH=/usr/bin:/bin:/opt/homebrew/bin
 
-0 * * * * sh $HOME/home/go/src/github.com/ohnishi/feed/bin/feed.sh > $HOME/log/feed.log
+0 * * * * sh /Users/ohnishi/home/go/src/github.com/ohnishi/feed/bin/feed.sh > /Users/ohnishi/log/feed.log
 ```

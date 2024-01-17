@@ -12,12 +12,13 @@ var subscriptions = []subscription{
 	{Title: "梅屋敷商店街のランダム・ウォーカー", URL: "https://randomwalker.blog.fc2.com/?xml", Fetched: time.Time{}},
 	{Title: "Publickey", URL: "https://www.publickey1.jp/atom.xml", Fetched: time.Time{}},
 	{Title: "Zennのトレンド", URL: "https://zenn.dev/feed", Fetched: time.Time{}},
-	{Title: "はてなブックマーク", URL: "https://b.hatena.ne.jp/hotentry/it.rss", Fetched: time.Time{}},
 	{Title: "CiLEL", URL: "https://cilel.jp/feed/", Fetched: time.Time{}},
 	{Title: "ログミーTech", URL: "https://logmi.jp/feed/public-tech.xml", Fetched: time.Time{}},
 	{Title: "ガジェラン", URL: "https://gadgelaun.com/?feed=rss2", Fetched: time.Time{}},
 	{Title: "IIJ Engineers Blog", URL: "https://eng-blog.iij.ad.jp/feed", Fetched: time.Time{}},
 	{Title: "Money Forward Developers Blog", URL: "https://moneyforward-dev.jp/feed", Fetched: time.Time{}},
+	{Title: "はてなブックマーク", URL: "https://b.hatena.ne.jp/hotentry/it.rss", Fetched: time.Time{}},
+	{Title: "ITmedia", URL: "https://rss.itmedia.co.jp/rss/2.0/topstory.xml", Fetched: time.Time{}},
 }
 
 func resetSubscriptions(dest string) error {
@@ -56,14 +57,14 @@ func checkResetModTimeSince(path string) bool {
 		return false
 	}
 
-	if time.Since(info.ModTime()).Hours() >= 24 {
-		return true
-	}
-
 	nowHour := time.Now().Hour()
 	modHour := info.ModTime().Hour()
 	// fmt.Println("aaaaaaa", time.Since(info.ModTime()).Hours())
-	if nowHour >= 19 && (modHour <= 19 || modHour > nowHour) {
+	if nowHour >= 19 && (modHour < 19 || modHour > nowHour) {
+		return true
+	}
+
+	if time.Since(info.ModTime()).Hours() >= 24 {
 		return true
 	}
 
