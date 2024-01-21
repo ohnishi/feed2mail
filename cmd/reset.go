@@ -19,6 +19,7 @@ var subscriptions = []subscription{
 	{Title: "Money Forward Developers Blog", URL: "https://moneyforward-dev.jp/feed", Fetched: time.Time{}},
 	{Title: "はてなブックマーク", URL: "https://b.hatena.ne.jp/hotentry/it.rss", Fetched: time.Time{}},
 	{Title: "ITmedia", URL: "https://rss.itmedia.co.jp/rss/2.0/topstory.xml", Fetched: time.Time{}},
+	{Title: "価格.comマガジン", URL: "https://kakakumag.com/rss/", Fetched: time.Time{}},
 }
 
 func resetSubscriptions(dest string) error {
