@@ -20,6 +20,10 @@ var subscriptions = []subscription{
 	{Title: "はてなブックマーク", URL: "https://b.hatena.ne.jp/hotentry/it.rss", Fetched: time.Time{}},
 	{Title: "ITmedia", URL: "https://rss.itmedia.co.jp/rss/2.0/topstory.xml", Fetched: time.Time{}},
 	{Title: "価格.comマガジン", URL: "https://kakakumag.com/rss/", Fetched: time.Time{}},
+	{Title: "ダイヤモンド・オンライン", URL: "https://diamond.jp/list/feed/rss/dol", Fetched: time.Time{}},
+	{Title: "ザイ・オンライン", URL: "https://diamond.jp/zai/list/feed/rsszol", Fetched: time.Time{}},
+	{Title: "東洋経済オンライン", URL: "https://toyokeizai.net/list/feed/rss", Fetched: time.Time{}},
+	{Title: "鈴木正行", URL: "https://note.com/redturtle0721/rss", Fetched: time.Time{}},
 }
 
 func resetSubscriptions(dest string) error {
