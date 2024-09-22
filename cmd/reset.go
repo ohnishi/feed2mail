@@ -16,7 +16,6 @@ var subscriptions = []subscription{
 	{Title: "ログミーTech", URL: "https://logmi.jp/feed/public-tech.xml", Fetched: time.Time{}},
 	{Title: "はてなブックマーク", URL: "https://b.hatena.ne.jp/hotentry/it.rss", Fetched: time.Time{}},
 	{Title: "ITmedia", URL: "https://rss.itmedia.co.jp/rss/2.0/topstory.xml", Fetched: time.Time{}},
-	{Title: "connpass 新着イベント", URL: "https://connpass.com/explore/ja.atom", Fetched: time.Time{}},
 	{Title: "NHKニュース|経済", URL: "https://www3.nhk.or.jp/rss/news/cat5.xml", Fetched: time.Time{}},
 	{Title: "梅屋敷商店街のランダム・ウォーカー", URL: "https://randomwalker.blog.fc2.com/?xml", Fetched: time.Time{}},
 }
