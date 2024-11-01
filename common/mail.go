@@ -39,6 +39,8 @@ func MailNotify(msg string) error {
 	// カスタムヘッダを指定
 	message.SetHeader("X-Sent-Using", "SendGrid-API")
 
+	// fmt.Println("message:", message)
+	// fmt.Println("appConf.SendGrid.To:", appConf.SendGrid.To)
 	// メール送信を行い、レスポンスを表示
 	client := sendgrid.NewSendClient(appConf.SendGrid.APIKey)
 	_, err = client.Send(message)
