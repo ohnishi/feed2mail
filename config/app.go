@@ -11,7 +11,7 @@ import (
 
 // App は全サービスのappの設定を表す。
 type App struct {
-	SendGrid SendGridApp `mapstructure:"sendgrid"`
+	Chatwork ChatworkApp `mapstructure:"chatwork"`
 }
 
 // NewApp はconfigPathの設定を読んで新しいAppを返す。

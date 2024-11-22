@@ -69,7 +69,7 @@ func feedToMail(dest string, retry int) error {
 		}
 	}
 
-	err = common.MailNotify(strings.Join(bodys, "\n"))
+	err = common.ChatworkNotify(strings.Join(bodys, "\n"), "")
 	if err != nil {
 		return err
 	}
@@ -181,12 +181,10 @@ func checkFeedModTimeSince(path string) bool {
 	if os.IsNotExist(err) {
 		return false
 	}
-
-	nowHour := time.Now().Hour()
-	nowDay := time.Now().Day()
-	modDay := info.ModTime().Day()
-	// fmt.Println("aaaaaaa", nowHour, nowDay, modDay)
-	if nowHour >= 18 && nowDay != modDay {
+	modTime := info.ModTime().In(time.Local)
+	nowTime := time.Now().In(time.Local)
+	// fmt.Println("aaaaaaa", path, nowTime.Hour(), modTime.Hour(), nowTime.Day(), modTime.Day())
+	if nowTime.Hour() >= 18 && nowTime.Day() != modTime.Day() {
 		return true
 	}
 

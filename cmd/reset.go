@@ -9,16 +9,14 @@ import (
 var subscriptions = []subscription{
 	{Title: "まめきちまめこニートの日常", URL: "https://mamekichimameko.blog.jp/index.rdf", Fetched: time.Time{}},
 	{Title: "くるねこ大和", URL: "https://blog.goo.ne.jp/kuru0214/rss2.xml", Fetched: time.Time{}},
-	{Title: "価格.comマガジン", URL: "https://kakakumag.com/rss/", Fetched: time.Time{}},
-	{Title: "ROOMIE（ルーミー）", URL: "https://www.roomie.jp/feed/", Fetched: time.Time{}},
 	{Title: "Publickey", URL: "https://www.publickey1.jp/atom.xml", Fetched: time.Time{}},
 	{Title: "Zennのトレンド", URL: "https://zenn.dev/feed", Fetched: time.Time{}},
-	{Title: "技術評論社", URL: "https://gihyo.jp/book/feed/rss2", Fetched: time.Time{}},
-	{Title: "ログミーTech", URL: "https://logmi.jp/feed/public-tech.xml", Fetched: time.Time{}},
+	{Title: "ログミーBusiness", URL: "https://logmi.jp/RSS/feed.xml", Fetched: time.Time{}},
 	{Title: "はてなブックマーク", URL: "https://b.hatena.ne.jp/hotentry/it.rss", Fetched: time.Time{}},
 	{Title: "ITmedia", URL: "https://rss.itmedia.co.jp/rss/2.0/topstory.xml", Fetched: time.Time{}},
 	{Title: "NHKニュース|経済", URL: "https://www3.nhk.or.jp/rss/news/cat5.xml", Fetched: time.Time{}},
 	{Title: "梅屋敷商店街のランダム・ウォーカー", URL: "https://randomwalker.blog.fc2.com/?xml", Fetched: time.Time{}},
+	{Title: "エムスリーテックブログ", URL: "https://www.m3tech.blog/rss", Fetched: time.Time{}},
 }
 
 func resetSubscriptions(dest string) error {
@@ -54,7 +52,7 @@ func resetSubscriptions(dest string) error {
 func checkResetModTimeSince(path string) bool {
 	info, err := os.Stat(path)
 	if os.IsNotExist(err) {
-		return false
+		return true
 	}
 
 	nowHour := time.Now().Hour()
