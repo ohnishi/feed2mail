@@ -184,7 +184,7 @@ func checkFeedModTimeSince(path string) bool {
 	modTime := info.ModTime().In(time.Local)
 	nowTime := time.Now().In(time.Local)
 	// fmt.Println("aaaaaaa", path, nowTime.Hour(), modTime.Hour(), nowTime.Day(), modTime.Day())
-	if nowTime.Hour() >= 18 && nowTime.Day() != modTime.Day() {
+	if nowTime.Hour() >= 17 && nowTime.Day() != modTime.Day() {
 		return true
 	}
 

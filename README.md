@@ -19,5 +19,5 @@ go run github.com/ohnishi/feed/cmd feed
 GOPATH=/Users/ohnishi/home/go
 PATH=/usr/bin:/bin:/opt/homebrew/bin
 
-0 18 * * * sh /Users/ohnishi/home/go/src/github.com/ohnishi/feed/bin/feed.sh > /Users/ohnishi/log/feed.log
+3 17-23 * * * sh /Users/ohnishi/home/go/src/github.com/ohnishi/feed/bin/feed.sh > /Users/ohnishi/home/log/feed.log
 ```
