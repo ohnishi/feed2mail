@@ -16,6 +16,7 @@ var subscriptions = []subscription{
 	{Title: "Zennのトレンド", URL: "https://zenn.dev/feed", Fetched: time.Time{}},
 	{Title: "Publickey", URL: "https://www.publickey1.jp/atom.xml", Fetched: time.Time{}},
 	{Title: "梅屋敷商店街のランダム・ウォーカー", URL: "https://randomwalker.blog.fc2.com/?xml", Fetched: time.Time{}},
+	{Title: "後藤達也", URL: "https://note.com/goto_finance/rss", Fetched: time.Time{}},
 }
 
 func resetSubscriptions(dest string) error {

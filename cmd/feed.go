@@ -45,10 +45,12 @@ func feedToMail(dest string, retry int) error {
 			}
 		}
 
+		if i > 0 {
+			bodys = append(bodys, "")
+		}
 		bodys = append(bodys, subscription.Title)
 		for _, item := range feed.Items {
 			published, err := parseLocal(item.Published)
-			// fmt.Println(published, err)
 			if err != nil {
 				return err
 			}
@@ -57,13 +59,11 @@ func feedToMail(dest string, retry int) error {
 				latest = published
 			}
 
-			// fmt.Println(subscription.Fetched.Before(published), subscription.Fetched, published)
 			if subscription.Fetched.Before(published) {
 				bodys = append(bodys, "  - "+item.Title)
 				bodys = append(bodys, "    - "+item.Link)
 			}
 		}
-		bodys = append(bodys, []string{"", ""}...)
 		if subscription.Fetched.Before(latest) {
 			subscriptions[i].Fetched = latest
 		}
