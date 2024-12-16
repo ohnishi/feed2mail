@@ -33,7 +33,7 @@ func MailNotify(msg, attachmentPath string) error {
 	message.AddPersonalizations(p)
 
 	// 件名を設定
-	message.Subject = "torrent更新通知"
+	message.Subject = "feed更新通知"
 	// テキストパートを設定
 	c := mail.NewContent("text/plain", msg)
 	message.AddContent(c)
