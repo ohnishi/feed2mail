@@ -11,6 +11,7 @@ var subscriptions = []subscription{
 	{Title: "くるねこ大和", URL: "https://blog.goo.ne.jp/kuru0214/rss2.xml", Fetched: time.Time{}},
 	{Title: "はてなブックマーク", URL: "https://b.hatena.ne.jp/hotentry/it.rss", Fetched: time.Time{}},
 	{Title: "ITmedia", URL: "https://rss.itmedia.co.jp/rss/2.0/topstory.xml", Fetched: time.Time{}},
+	{Title: "窓の杜", URL: "https://forest.watch.impress.co.jp/data/rss/1.0/wf/feed.rdf", Fetched: time.Time{}},
 	{Title: "CoinPost", URL: "https://coinpost.jp/?feed=rss2", Fetched: time.Time{}},
 	{Title: "コインテレグラフ", URL: "https://jp.cointelegraph.com/rss", Fetched: time.Time{}},
 	{Title: "NHKニュース|経済", URL: "https://www3.nhk.or.jp/rss/news/cat5.xml", Fetched: time.Time{}},
