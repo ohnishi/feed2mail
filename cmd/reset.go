@@ -21,6 +21,13 @@ var subscriptions = []subscription{
 	{Title: "後藤達也", URL: "https://note.com/goto_finance/rss", Fetched: time.Time{}},
 	{Title: "輸入販売サポートのCiLEL", URL: "https://cilel.jp/feed/", Fetched: time.Time{}},
 	{Title: "中国輸⼊の基礎知識", URL: "https://cilel.jp/blog/feed/", Fetched: time.Time{}},
+	{Title: "ギズモード・ジャパン", URL: "https://www.gizmodo.jp/index.xml", Fetched: time.Time{}},
+	{Title: "ROOMIE（ルーミー）", URL: "https://www.roomie.jp/feed/", Fetched: time.Time{}},
+	{Title: "【価格.com 新製品ニュース】", URL: "https://news.kakaku.com/prdnews/rss/", Fetched: time.Time{}},
+	{Title: "価格.comマガジン", URL: "https://kakakumag.com/rss/", Fetched: time.Time{}},
+	{Title: "DevelopersIO", URL: "https://dev.classmethod.jp/feed/", Fetched: time.Time{}},
+	{Title: "LINEヤフー Tech Blog", URL: "https://techblog.lycorp.co.jp/ja/feed/index.xml", Fetched: time.Time{}},
+	{Title: "メルカリエンジニアリングブログ", URL: "https://engineering.mercari.com/blog/feed.xml", Fetched: time.Time{}},
 }
 
 func resetSubscriptions(dest string) error {
