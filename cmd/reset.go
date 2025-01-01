@@ -28,6 +28,11 @@ var subscriptions = []subscription{
 	{Title: "DevelopersIO", URL: "https://dev.classmethod.jp/feed/", Fetched: time.Time{}},
 	{Title: "LINEヤフー Tech Blog", URL: "https://techblog.lycorp.co.jp/ja/feed/index.xml", Fetched: time.Time{}},
 	{Title: "メルカリエンジニアリングブログ", URL: "https://engineering.mercari.com/blog/feed.xml", Fetched: time.Time{}},
+	{Title: "しろまる日記<", URL: "https://note.com/asuka_shiromaru/rss", Fetched: time.Time{}},
+	{Title: "セールモンスター", URL: "https://note.com/_salemonster/rss", Fetched: time.Time{}},
+	{Title: "久松剛", URL: "https://note.com/makaibito/rss", Fetched: time.Time{}},
+	{Title: "ChatGPT研究所", URL: "https://chatgpt-lab.com/rss", Fetched: time.Time{}},
+	{Title: "genkAIjokyo|ChatGPT/Claudeで論文作成と科研費申請", URL: "https://note.com/genkaijokyo/rss", Fetched: time.Time{}},
 }
 
 func resetSubscriptions(dest string) error {
