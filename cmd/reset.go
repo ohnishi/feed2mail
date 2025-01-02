@@ -18,21 +18,14 @@ var subscriptions = []subscription{
 	{Title: "Zennのトレンド", URL: "https://zenn.dev/feed", Fetched: time.Time{}},
 	{Title: "Publickey", URL: "https://www.publickey1.jp/atom.xml", Fetched: time.Time{}},
 	{Title: "梅屋敷商店街のランダム・ウォーカー", URL: "https://randomwalker.blog.fc2.com/?xml", Fetched: time.Time{}},
-	{Title: "後藤達也", URL: "https://note.com/goto_finance/rss", Fetched: time.Time{}},
 	{Title: "輸入販売サポートのCiLEL", URL: "https://cilel.jp/feed/", Fetched: time.Time{}},
 	{Title: "中国輸⼊の基礎知識", URL: "https://cilel.jp/blog/feed/", Fetched: time.Time{}},
 	{Title: "ギズモード・ジャパン", URL: "https://www.gizmodo.jp/index.xml", Fetched: time.Time{}},
 	{Title: "ROOMIE（ルーミー）", URL: "https://www.roomie.jp/feed/", Fetched: time.Time{}},
-	{Title: "【価格.com 新製品ニュース】", URL: "https://news.kakaku.com/prdnews/rss/", Fetched: time.Time{}},
 	{Title: "価格.comマガジン", URL: "https://kakakumag.com/rss/", Fetched: time.Time{}},
 	{Title: "DevelopersIO", URL: "https://dev.classmethod.jp/feed/", Fetched: time.Time{}},
 	{Title: "LINEヤフー Tech Blog", URL: "https://techblog.lycorp.co.jp/ja/feed/index.xml", Fetched: time.Time{}},
 	{Title: "メルカリエンジニアリングブログ", URL: "https://engineering.mercari.com/blog/feed.xml", Fetched: time.Time{}},
-	{Title: "しろまる日記<", URL: "https://note.com/asuka_shiromaru/rss", Fetched: time.Time{}},
-	{Title: "セールモンスター", URL: "https://note.com/_salemonster/rss", Fetched: time.Time{}},
-	{Title: "久松剛", URL: "https://note.com/makaibito/rss", Fetched: time.Time{}},
-	{Title: "ChatGPT研究所", URL: "https://chatgpt-lab.com/rss", Fetched: time.Time{}},
-	{Title: "genkAIjokyo|ChatGPT/Claudeで論文作成と科研費申請", URL: "https://note.com/genkaijokyo/rss", Fetched: time.Time{}},
 }
 
 func resetSubscriptions(dest string) error {
