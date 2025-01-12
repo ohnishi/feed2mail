@@ -14,6 +14,7 @@ var subscriptions = []subscription{
 	{Title: "窓の杜", URL: "https://forest.watch.impress.co.jp/data/rss/1.0/wf/feed.rdf", Fetched: time.Time{}},
 	{Title: "CoinPost", URL: "https://coinpost.jp/?feed=rss2", Fetched: time.Time{}},
 	{Title: "コインテレグラフ", URL: "https://jp.cointelegraph.com/rss", Fetched: time.Time{}},
+	{Title: "LINE BITMAX 公式ブログ", URL: "https://linebitmax.blog.jp/index.rdf", Fetched: time.Time{}},
 	{Title: "NHKニュース|経済", URL: "https://www3.nhk.or.jp/rss/news/cat5.xml", Fetched: time.Time{}},
 	{Title: "Zennのトレンド", URL: "https://zenn.dev/feed", Fetched: time.Time{}},
 	{Title: "Publickey", URL: "https://www.publickey1.jp/atom.xml", Fetched: time.Time{}},
@@ -26,6 +27,12 @@ var subscriptions = []subscription{
 	{Title: "DevelopersIO", URL: "https://dev.classmethod.jp/feed/", Fetched: time.Time{}},
 	{Title: "LINEヤフー Tech Blog", URL: "https://techblog.lycorp.co.jp/ja/feed/index.xml", Fetched: time.Time{}},
 	{Title: "メルカリエンジニアリングブログ", URL: "https://engineering.mercari.com/blog/feed.xml", Fetched: time.Time{}},
+	{Title: "入江 慎吾の個人的な開発", URL: "https://note.com/iritec/rss", Fetched: time.Time{}},
+	{Title: "Amazon物販戦略家！わさびん土屋", URL: "https://note.com/wasabinbin/rss", Fetched: time.Time{}},
+	{Title: "しろまる日記", URL: "https://note.com/asuka_shiromaru/rss", Fetched: time.Time{}},
+	{Title: "セールモンスター", URL: "https://note.com/_salemonster/rss", Fetched: time.Time{}},
+	{Title: "久松剛", URL: "https://note.com/makaibito/rss", Fetched: time.Time{}},
+	{Title: "アプリマーケティング研究所", URL: "https://markelabo.com/rss", Fetched: time.Time{}},
 }
 
 func resetSubscriptions(dest string) error {
