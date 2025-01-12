@@ -40,6 +40,7 @@ var subscriptions = []subscription{
 	{Title: "Naokiman Show", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UC4lN5sizuJraSHqy99xTy6Q", Fetched: time.Time{}},
 	{Title: "Naokiman 2nd Channel", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCT9cFrlnfy1-XLf0Vuy0Zzw", Fetched: time.Time{}},
 	{Title: "丸山ゴンザレスの裏社会ジャーニー", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCaxKWSwF_egyenDrW4h4y2A", Fetched: time.Time{}},
+	{Title: "入江慎吾の個人的な開発", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UC3wNxV5ZWOL9kf4v2oXGQbw", Fetched: time.Time{}},
 }
 
 func resetSubscriptions(dest string) error {
