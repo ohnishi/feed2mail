@@ -21,11 +21,6 @@ type subscription struct {
 
 func feedToMail(dest string, retry int) error {
 	filePath := filepath.Join(dest, "fetchinfo.jsonl")
-
-	if !checkFeedModTimeSince(filePath) {
-		return nil
-	}
-
 	subscriptions, err := readSubscriptions(filePath)
 	if err != nil {
 		return err
@@ -69,15 +64,15 @@ func feedToMail(dest string, retry int) error {
 		}
 	}
 
-	// err = common.ChatworkNotify(strings.Join(bodys, "\n"), "")
-	// if err != nil {
-	// 	return err
-	// }
-
-	err = common.MailNotify(strings.Join(bodys, "\n"), "")
+	err = common.ChatworkNotify(strings.Join(bodys, "\n"), "")
 	if err != nil {
 		return err
 	}
+
+	// err = common.MailNotify(strings.Join(bodys, "\n"), "")
+	// if err != nil {
+	// 	return err
+	// }
 
 	return writeSubscription(filepath.Join(dest, "fetchinfo.jsonl"), subscriptions)
 }
@@ -179,20 +174,4 @@ func FileExists(filename string) bool {
 		return false
 	}
 	return err == nil
-}
-
-func checkFeedModTimeSince(path string) bool {
-	info, err := os.Stat(path)
-	if os.IsNotExist(err) {
-		return false
-	}
-	modTime := info.ModTime().In(time.Local)
-	nowTime := time.Now().In(time.Local)
-	// fmt.Println("aaaaaaa", path, nowTime.Hour(), modTime.Hour(), nowTime.Day(), modTime.Day())
-	if nowTime.Hour() >= 17 && nowTime.Day() != modTime.Day() {
-		return true
-	}
-
-	// fmt.Println(time.Since(info.ModTime()).Minutes())
-	return time.Since(info.ModTime()).Minutes() < 1
 }

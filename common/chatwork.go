@@ -108,7 +108,7 @@ func ChatworkNotify(message, filePath string) error {
 	fmt.Println("Uploading file...", appConf.Chatwork.APIToken)
 
 	apiToken := appConf.Chatwork.APIToken
-	roomID := "378090501" // 投稿するルームのID
+	roomID := "386132808" // 投稿するルームのID
 
 	if filePath == "" {
 		// メッセージ投稿
