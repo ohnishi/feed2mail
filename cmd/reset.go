@@ -21,6 +21,7 @@ var subscriptions = []subscription{
 	{Title: "久松剛", URL: "https://note.com/makaibito/rss", Fetched: time.Time{}},
 	{Title: "Gemini - Google の AI", URL: "https://note.com/google_gemini/rss", Fetched: time.Time{}},
 	{Title: "ニケちゃん", URL: "https://note.com/nike_cha_n/rss", Fetched: time.Time{}},
+	{Title: "1688Japan", URL: "https://note.com/1688_japan_blog/rss", Fetched: time.Time{}},
 	{Title: "チェンソーマン", URL: "https://shonenjumpplus.com/rss/series/3270375685341574005", Fetched: time.Time{}},
 	{Title: "ワンパンマン", URL: "https://tonarinoyj.jp/rss/series/13932016480028984490", Fetched: time.Time{}},
 	{Title: "タワーダンジョン", URL: "https://comic-days.com/rss/series/14079602755256855913", Fetched: time.Time{}},

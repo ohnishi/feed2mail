@@ -38,12 +38,14 @@ func feedToMail(dest string, retry int) error {
 			} else if cnt == retry {
 				return err
 			}
+			time.Sleep(3 * time.Second)
 		}
 
 		if i > 0 {
 			bodys = append(bodys, "")
 		}
-		bodys = append(bodys, subscription.Title)
+
+		siteBodys := []string{subscription.Title}
 		for _, item := range feed.Items {
 			published, err := parseLocal(item.Published)
 			if err != nil {
@@ -55,24 +57,28 @@ func feedToMail(dest string, retry int) error {
 			}
 
 			if subscription.Fetched.Before(published) {
-				bodys = append(bodys, "  - "+item.Title)
-				bodys = append(bodys, "    - "+item.Link)
+				siteBodys = append(siteBodys, "  - "+item.Title)
+				siteBodys = append(siteBodys, "    - "+item.Link)
 			}
 		}
+		if len(siteBodys) > 1 {
+			bodys = append(bodys, siteBodys...)
+		}
+
 		if subscription.Fetched.Before(latest) {
 			subscriptions[i].Fetched = latest
 		}
 	}
 
-	// err = common.ChatworkNotify(strings.Join(bodys, "\n"), "")
-	// if err != nil {
-	// 	return err
-	// }
-
-	err = common.MailNotify(strings.Join(bodys, "\n"), "")
+	err = common.ChatworkNotify(strings.Join(bodys, "\n"), "")
 	if err != nil {
 		return err
 	}
+
+	// err = common.MailNotify(strings.Join(bodys, "\n"), "")
+	// if err != nil {
+	// 	return err
+	// }
 
 	return writeSubscription(filepath.Join(dest, "fetchinfo.jsonl"), subscriptions)
 }
