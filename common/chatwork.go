@@ -6,6 +6,7 @@ import (
 	"io"
 	"mime/multipart"
 	"net/http"
+	"net/url"
 	"os"
 	"path/filepath"
 
@@ -13,11 +14,15 @@ import (
 	"github.com/pkg/errors"
 )
 
-func postMessageToChatwork(apiToken, roomID, message string) error {
-	url := fmt.Sprintf("https://api.chatwork.com/v2/rooms/%s/messages", roomID)
-	data := "body=" + message
+func postMessageToChatwork(apiToken, roomID, message string, selfUnread int) error {
+	apiURL := fmt.Sprintf("https://api.chatwork.com/v2/rooms/%s/messages", roomID)
 
-	req, err := http.NewRequest("POST", url, bytes.NewBuffer([]byte(data)))
+	// URLエンコードされたデータを作成
+	data := url.Values{}
+	data.Set("body", message)
+	data.Set("self_unread", fmt.Sprintf("%d", selfUnread))
+
+	req, err := http.NewRequest("POST", apiURL, bytes.NewBufferString(data.Encode()))
 	if err != nil {
 		return fmt.Errorf("failed to create HTTP request: %v", err)
 	}
@@ -39,7 +44,7 @@ func postMessageToChatwork(apiToken, roomID, message string) error {
 	return nil
 }
 
-func uploadFileToChatwork(apiToken, roomID, filePath, message string) error {
+func uploadFileToChatwork(apiToken, roomID, filePath, message string, selfUnread int) error {
 	url := fmt.Sprintf("https://api.chatwork.com/v2/rooms/%s/files", roomID)
 
 	// ファイルを開く
@@ -67,6 +72,12 @@ func uploadFileToChatwork(apiToken, roomID, filePath, message string) error {
 	err = writer.WriteField("message", message)
 	if err != nil {
 		return fmt.Errorf("failed to add message field: %v", err)
+	}
+
+	// self_unread パートを追加
+	err = writer.WriteField("self_unread", fmt.Sprintf("%d", selfUnread))
+	if err != nil {
+		return fmt.Errorf("failed to add self_unread field: %v", err)
 	}
 
 	// Writerのクローズ
@@ -100,7 +111,7 @@ func uploadFileToChatwork(apiToken, roomID, filePath, message string) error {
 	return nil
 }
 
-func ChatworkNotify(message, filePath string) error {
+func ChatworkNotify(message, filePath string, selfUnread int) error {
 	appConf, err := config.NewDefaultApp()
 	if err != nil {
 		return errors.Wrap(err, "failed to read config")
@@ -112,13 +123,13 @@ func ChatworkNotify(message, filePath string) error {
 
 	if filePath == "" {
 		// メッセージ投稿
-		err = postMessageToChatwork(apiToken, roomID, message)
+		err = postMessageToChatwork(apiToken, roomID, message, selfUnread)
 		if err != nil {
 			return errors.Wrap(err, "failed to post message")
 		}
 	} else {
-		// ファイルのアップロード
-		err = uploadFileToChatwork(apiToken, roomID, filePath, message)
+		// ファイルのアップロード（self_unreadはメッセージ投稿時のみのため影響なし）
+		err = uploadFileToChatwork(apiToken, roomID, filePath, message, selfUnread)
 		if err != nil {
 			return errors.Wrap(err, "failed to upload file")
 		}

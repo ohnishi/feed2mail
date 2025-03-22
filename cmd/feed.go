@@ -41,10 +41,6 @@ func feedToMail(dest string, retry int) error {
 			time.Sleep(3 * time.Second)
 		}
 
-		if i > 0 {
-			bodys = append(bodys, "")
-		}
-
 		siteBodys := []string{subscription.Title}
 		for _, item := range feed.Items {
 			published, err := parseLocal(item.Published)
@@ -62,6 +58,9 @@ func feedToMail(dest string, retry int) error {
 			}
 		}
 		if len(siteBodys) > 1 {
+			if len(bodys) > 0 {
+				bodys = append(bodys, "")
+			}
 			bodys = append(bodys, siteBodys...)
 		}
 
@@ -70,7 +69,7 @@ func feedToMail(dest string, retry int) error {
 		}
 	}
 
-	err = common.ChatworkNotify(strings.Join(bodys, "\n"), "")
+	err = common.ChatworkNotify(strings.Join(bodys, "\n"), "", 1)
 	if err != nil {
 		return err
 	}

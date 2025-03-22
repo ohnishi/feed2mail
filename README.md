@@ -16,3 +16,9 @@ go run github.com/ohnishi/feed/cmd feed
 
 ### cron 設定
 0 17-23 * * * sh /Users/ohnishi/home/go/src/github.com/ohnishi/feed/bin/feed.sh > /Users/ohnishi/home/log/feed.log
+
+
+### github設定
+cd /Users/ohnishi/home/go/src/github.com/ohnishi/feed
+git config --local user.name "ohnishi"
+git config --local user.email "ohnishi.co@icloud.com"
