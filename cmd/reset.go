@@ -17,6 +17,19 @@ var subscriptions = []subscription{
 	{Title: "ワンパンマン", URL: "https://tonarinoyj.jp/rss/series/13932016480028984490", Fetched: time.Time{}},
 	{Title: "タワーダンジョン", URL: "https://comic-days.com/rss/series/14079602755256855913", Fetched: time.Time{}},
 	{Title: "ダンダダン", URL: "https://shonenjumpplus.com/rss/series/3269632237310729745", Fetched: time.Time{}},
+	{Title: "1688Japan", URL: "https://note.com/1688_japan_blog/rss", Fetched: time.Time{}},
+	{Title: "Gemini - Google の AI", URL: "https://note.com/google_gemini/rss", Fetched: time.Time{}},
+	{Title: "久松剛", URL: "https://note.com/makaibito/rss", Fetched: time.Time{}},
+	{Title: "セールモンスター", URL: "https://note.com/_salemonster/rss", Fetched: time.Time{}},
+	{Title: "Amazon物販戦略家！わさびん土屋", URL: "https://note.com/wasabinbin/rss", Fetched: time.Time{}},
+	{Title: "shi3z", URL: "https://note.com/shi3zblog/rss", Fetched: time.Time{}},
+	{Title: "入江 慎吾🚀 ソロプレナー", URL: "https://note.com/iritec/rss", Fetched: time.Time{}},
+	{Title: "tamayan", URL: "https://note.com/tamayan888/rss", Fetched: time.Time{}},
+	{Title: "四季報写経ウーマン", URL: "https://note.com/shikiho_shakyo/rss", Fetched: time.Time{}},
+	{Title: "AI FREAK - 最新のAIツールをご紹介", URL: "https://note.com/ai_freak/rss", Fetched: time.Time{}},
+	{Title: "1688Japan", URL: "https://note.com/1688_japan_blog/rss", Fetched: time.Time{}},
+	{Title: "キムラ ヨシト", URL: "https://note.com/k1mu/rss", Fetched: time.Time{}},
+	{Title: "ニケちゃん", URL: "https://note.com/nike_cha_n/rss", Fetched: time.Time{}},
 }
 
 func resetSubscriptions(dest string) error {
