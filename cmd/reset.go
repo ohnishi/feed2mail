@@ -9,10 +9,14 @@ var subscriptions = []subscription{
 	{Title: "はてなブックマーク", URL: "https://b.hatena.ne.jp/hotentry/it.rss", Fetched: time.Time{}},
 	{Title: "Zennのトレンド", URL: "https://zenn.dev/feed", Fetched: time.Time{}},
 	{Title: "Publickey", URL: "https://www.publickey1.jp/atom.xml", Fetched: time.Time{}},
+	{Title: "ITmedia", URL: "https://rss.itmedia.co.jp/rss/2.0/topstory.xml", Fetched: time.Time{}},
+	{Title: "IT - Yahoo!ニュース", URL: "https://news.yahoo.co.jp/rss/categories/it.xml", Fetched: time.Time{}},
+	{Title: "NHKニュース", URL: "https://www3.nhk.or.jp/rss/news/cat0.xml", Fetched: time.Time{}},
 	{Title: "まめきちまめこニートの日常", URL: "https://mamekichimameko.blog.jp/index.rdf", Fetched: time.Time{}},
 	{Title: "くるねこ大和", URL: "https://blog.goo.ne.jp/kuru0214/rss2.xml", Fetched: time.Time{}},
 	{Title: "梅屋敷商店街のランダム・ウォーカー", URL: "https://randomwalker.blog.fc2.com/?xml", Fetched: time.Time{}},
 	{Title: "メルカリエンジニアリングブログ", URL: "https://engineering.mercari.com/blog/feed.xml", Fetched: time.Time{}},
+	{Title: "しょぷーブログ", URL: "https://new-shopuublog.com/feed/", Fetched: time.Time{}},
 	{Title: "チェンソーマン", URL: "https://shonenjumpplus.com/rss/series/3270375685341574005", Fetched: time.Time{}},
 	{Title: "ワンパンマン", URL: "https://tonarinoyj.jp/rss/series/13932016480028984490", Fetched: time.Time{}},
 	{Title: "タワーダンジョン", URL: "https://comic-days.com/rss/series/14079602755256855913", Fetched: time.Time{}},
@@ -30,6 +34,9 @@ var subscriptions = []subscription{
 	{Title: "1688Japan", URL: "https://note.com/1688_japan_blog/rss", Fetched: time.Time{}},
 	{Title: "キムラ ヨシト", URL: "https://note.com/k1mu/rss", Fetched: time.Time{}},
 	{Title: "ニケちゃん", URL: "https://note.com/nike_cha_n/rss", Fetched: time.Time{}},
+	{Title: "erukiti", URL: "https://note.com/erukiti/rss", Fetched: time.Time{}},
+	{Title: "shu", URL: "https://note.com/shu127/rss", Fetched: time.Time{}},
+	{Title: "現海秀哲物販Note", URL: "https://note.com/genkai_hideaki/rss", Fetched: time.Time{}},
 }
 
 func resetSubscriptions(dest string) error {

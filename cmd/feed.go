@@ -69,15 +69,20 @@ func feedToMail(dest string, retry int) error {
 		}
 	}
 
-	err = common.ChatworkNotify(strings.Join(bodys, "\n"), "", 1)
-	if err != nil {
-		return err
-	}
+	// err = common.ChatworkNotify(strings.Join(bodys, "\n"), "", 1)
+	// if err != nil {
+	// 	return err
+	// }
 
 	// err = common.MailNotify(strings.Join(bodys, "\n"), "")
 	// if err != nil {
 	// 	return err
 	// }
+
+	err = common.MailNotifyByResend(strings.Join(bodys, "\n"), "")
+	if err != nil {
+		return err
+	}
 
 	return writeSubscription(filepath.Join(dest, "fetchinfo.jsonl"), subscriptions)
 }

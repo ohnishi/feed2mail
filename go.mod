@@ -5,6 +5,7 @@ go 1.23
 require (
 	github.com/mmcdole/gofeed v1.3.0
 	github.com/pkg/errors v0.9.1
+	github.com/resend/resend-go/v2 v2.17.0
 	github.com/sendgrid/sendgrid-go v3.16.0+incompatible
 	github.com/spf13/cobra v1.8.1
 	github.com/spf13/viper v1.19.0

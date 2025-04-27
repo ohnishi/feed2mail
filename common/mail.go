@@ -2,11 +2,14 @@ package common
 
 import (
 	"encoding/base64"
+	"fmt"
 	"io"
 	"os"
+	"path/filepath"
 
 	"github.com/ohnishi/feed/config"
 	"github.com/pkg/errors"
+	"github.com/resend/resend-go/v2"
 	"github.com/sendgrid/sendgrid-go"
 	"github.com/sendgrid/sendgrid-go/helpers/mail"
 )
@@ -69,4 +72,56 @@ func MailNotify(msg, attachmentPath string) error {
 		return err
 	}
 	return nil
+}
+
+func MailNotifyByResend(msg, attachmentPath string) error {
+	appConf, err := config.NewDefaultApp()
+	if err != nil {
+		return errors.Wrap(err, "failed to read config")
+	}
+	// apiKey := "re_6vMqHq34_32T3fGeL47rmN43zCLMEZ6MF"
+
+	client := resend.NewClient(appConf.SendGrid.APIKey)
+
+	params := &resend.SendEmailRequest{
+		From:    "notify@resend.dev",
+		To:      []string{"notify@example.com"},
+		Subject: "feed更新通知",
+		Text:    msg,
+	}
+
+	if attachmentPath != "" {
+		attachment, err := createAttachment(attachmentPath)
+		if err != nil {
+			return err
+		}
+		params.Attachments = append(params.Attachments, attachment)
+	}
+
+	sent, err := client.Emails.Send(params)
+	if err != nil {
+		return err
+	}
+	fmt.Println(sent)
+	return nil
+}
+
+// ファイルを読み込んで添付ファイルを作成する関数
+func createAttachment(filePath string) (*resend.Attachment, error) {
+	// ファイルの内容を読み込む
+	fileContent, err := os.ReadFile(filePath)
+	if err != nil {
+		return nil, fmt.Errorf("ファイル読み込みエラー: %w", err)
+	}
+
+	// ファイル名だけを取得
+	fileName := filepath.Base(filePath)
+
+	// 添付ファイルを作成
+	attachment := &resend.Attachment{
+		Filename: fileName,
+		Content:  fileContent,
+	}
+
+	return attachment, nil
 }
