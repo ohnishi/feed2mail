@@ -84,7 +84,7 @@ func MailNotifyByResend(msg, attachmentPath string) error {
 	client := resend.NewClient(appConf.SendGrid.APIKey)
 
 	params := &resend.SendEmailRequest{
-		From:    "notify@resend.dev",
+		From:    "feed@resend.dev",
 		To:      []string{"notify@example.com"},
 		Subject: "feed更新通知",
 		Text:    msg,
