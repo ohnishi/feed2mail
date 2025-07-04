@@ -3,9 +3,11 @@ package main
 import (
 	"path/filepath"
 	"time"
+
+	"github.com/ohnishi/feed/models"
 )
 
-var subscriptions = []subscription{
+var subscriptions = []models.Subscription{
 	{Title: "NHKニュース", URL: "https://www3.nhk.or.jp/rss/news/cat0.xml", Fetched: time.Time{}},
 	{Title: "はてなブックマーク", URL: "https://b.hatena.ne.jp/hotentry/it.rss", Fetched: time.Time{}},
 	{Title: "ITmedia", URL: "https://rss.itmedia.co.jp/rss/2.0/topstory.xml", Fetched: time.Time{}},
@@ -37,14 +39,14 @@ var subscriptions = []subscription{
 }
 
 func resetSubscriptions(dest string) error {
-	filePath := filepath.Join(dest, "fetchinfo.jsonl")
+	filePath := filepath.Join(dest)
 
-	oldSubscriptions, err := readSubscriptions(filePath)
+	oldSubscriptions, err := models.ReadSubscriptions(filePath)
 	if err != nil {
 		return err
 	}
 
-	var newSubscriptions []subscription
+	var newSubscriptions []models.Subscription
 	for _, s := range subscriptions {
 		isExists := false
 		for _, old := range oldSubscriptions {
@@ -60,5 +62,22 @@ func resetSubscriptions(dest string) error {
 		}
 	}
 
-	return writeSubscription(filePath, newSubscriptions)
+	return models.WriteSubscription(filePath, newSubscriptions)
+}
+
+const (
+	maxRetry = 3
+	saveFile = "fetched.jsonl"
+)
+
+func main() {
+	err := resetSubscriptions(saveFile)
+	if err != nil {
+		panic(err)
+	}
+
+	err = models.FeedToMail(saveFile, maxRetry)
+	if err != nil {
+		panic(err)
+	}
 }

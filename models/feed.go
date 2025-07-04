@@ -1,4 +1,4 @@
-package main
+package models
 
 import (
 	"encoding/json"
@@ -9,19 +9,17 @@ import (
 	"time"
 
 	"github.com/mmcdole/gofeed"
-	"github.com/ohnishi/feed/common"
 	"github.com/pkg/errors"
 )
 
-type subscription struct {
+type Subscription struct {
 	Title   string    `json:"title"`
 	URL     string    `json:"url"`
 	Fetched time.Time `json:"fetched"`
 }
 
-func feedToMail(dest string, retry int) error {
-	filePath := filepath.Join(dest, "fetchinfo.jsonl")
-	subscriptions, err := readSubscriptions(filePath)
+func FeedToMail(filePath string, retry int) error {
+	subscriptions, err := ReadSubscriptions(filePath)
 	if err != nil {
 		return err
 	}
@@ -69,25 +67,15 @@ func feedToMail(dest string, retry int) error {
 		}
 	}
 
-	// err = common.ChatworkNotify(strings.Join(bodys, "\n"), "", 1)
-	// if err != nil {
-	// 	return err
-	// }
-
-	// err = common.MailNotify(strings.Join(bodys, "\n"), "")
-	// if err != nil {
-	// 	return err
-	// }
-
-	err = common.MailNotifyByResend(strings.Join(bodys, "\n"), "")
+	err = mailNotifyByResend(strings.Join(bodys, "\n"), "")
 	if err != nil {
 		return err
 	}
 
-	return writeSubscription(filepath.Join(dest, "fetchinfo.jsonl"), subscriptions)
+	return WriteSubscription(filePath, subscriptions)
 }
 
-func writeSubscription(path string, subscriptions []subscription) error {
+func WriteSubscription(path string, subscriptions []Subscription) error {
 	if len(subscriptions) == 0 {
 		return nil
 	}
@@ -141,29 +129,6 @@ func toJSON(r interface{}) (string, error) {
 	return fmt.Sprintf("%s\n", jsonStr), nil
 }
 
-func readSubscriptions(path string) ([]subscription, error) {
-	if !FileExists(path) {
-		return nil, nil
-	}
-
-	f, err := os.Open(path)
-	if err != nil {
-		return nil, errors.Wrapf(err, "failed to open file: %s", path)
-	}
-	defer f.Close()
-
-	var subscriptions []subscription
-	d := json.NewDecoder(f)
-	for d.More() {
-		var s subscription
-		if err := d.Decode(&s); err != nil {
-			return nil, errors.Wrap(err, "could not unmarshal subscription")
-		}
-		subscriptions = append(subscriptions, s)
-	}
-	return subscriptions, nil
-}
-
 func parseLocal(value string) (t time.Time, err error) {
 	for _, layout := range []string{time.RFC1123, time.RFC3339, time.RFC1123Z} {
 		t, err = time.ParseInLocation(layout, value, time.Local)
@@ -184,4 +149,27 @@ func FileExists(filename string) bool {
 		return false
 	}
 	return err == nil
+}
+
+func ReadSubscriptions(filePath string) ([]Subscription, error) {
+	if !FileExists(filePath) {
+		return nil, nil
+	}
+
+	f, err := os.Open(filePath)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to open file: %s", filePath)
+	}
+	defer f.Close()
+
+	var subscriptions []Subscription
+	d := json.NewDecoder(f)
+	for d.More() {
+		var s Subscription
+		if err := d.Decode(&s); err != nil {
+			return nil, errors.Wrap(err, "could not unmarshal subscription")
+		}
+		subscriptions = append(subscriptions, s)
+	}
+	return subscriptions, nil
 }
