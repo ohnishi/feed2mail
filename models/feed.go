@@ -3,6 +3,7 @@ package models
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 	"os"
 	"path/filepath"
 	"strings"
@@ -34,6 +35,7 @@ func FeedToMail(filePath string, retry int) error {
 			if err == nil {
 				break
 			} else if cnt == retry {
+				log.Printf("HTTP request failed: %v", err)
 				return err
 			}
 			time.Sleep(3 * time.Second)

@@ -2,6 +2,7 @@ package models
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"path/filepath"
 
@@ -30,11 +31,11 @@ func mailNotifyByResend(msg, attachmentPath string) error {
 		params.Attachments = append(params.Attachments, attachment)
 	}
 
-	sent, err := client.Emails.Send(params)
+	_, err := client.Emails.Send(params)
 	if err != nil {
+		log.Printf("mail send failed: %v", err)
 		return err
 	}
-	fmt.Println(sent)
 	return nil
 }
 
