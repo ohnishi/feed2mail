@@ -32,6 +32,7 @@ func FeedToMail(filePath string, retry int) error {
 		var feed *gofeed.Feed
 		for cnt := 1; cnt <= retry; cnt++ {
 			feed, err = fp.ParseURL(subscription.URL)
+			log.Printf("parse rss url: %d, %s", cnt, subscription.URL)
 			if err == nil {
 				break
 			} else if cnt == retry {
