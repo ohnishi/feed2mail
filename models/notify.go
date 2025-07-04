@@ -10,12 +10,13 @@ import (
 
 func mailNotifyByResend(msg, attachmentPath string) error {
 	apiKey := os.Getenv("MAIL_APIKEY")
-	sendTo := os.Getenv("MAIL_TO")
+	sendFrom := "feed@resend.dev"
+	sendTo := "notify@example.com"
 
 	client := resend.NewClient(apiKey)
 
 	params := &resend.SendEmailRequest{
-		From:    "feed@resend.dev",
+		From:    sendFrom,
 		To:      []string{sendTo},
 		Subject: "feed更新通知",
 		Text:    msg,

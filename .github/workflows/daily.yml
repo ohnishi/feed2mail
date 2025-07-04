@@ -26,6 +26,8 @@ jobs:
 
       - name: Run Go script
         run: go run main.go
+        env:
+          MAIL_APIKEY: ${{ secrets.MAIL_APIKEY }}
 
       # 必要に応じて結果をアーティファクトとして保存
       - name: Upload results (optional)
