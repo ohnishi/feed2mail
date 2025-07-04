@@ -67,7 +67,7 @@ func resetSubscriptions(dest string) error {
 
 const (
 	maxRetry = 3
-	saveFile = "fetched.jsonl"
+	saveFile = "cache/fetched.jsonl"
 )
 
 func main() {

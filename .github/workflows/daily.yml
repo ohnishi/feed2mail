@@ -1,0 +1,37 @@
+name: Daily Go Script Execution
+
+on:
+  schedule:
+    # 毎日 17:00 UTC に実行（JST では 2:00 AM）
+    - cron: '0 17 * * *'
+
+  # 手動実行も可能にする
+  workflow_dispatch:
+
+jobs:
+  run-go-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.24'  # 必要に応じてGoのバージョンを変更
+
+      - name: Install dependencies
+        run: go mod download
+
+      - name: Run Go script
+        run: go run main.go
+
+      # 必要に応じて結果をアーティファクトとして保存
+      - name: Upload results (optional)
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: execution-results
+          path: |
+            cache/fetched.jsonl
