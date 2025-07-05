@@ -34,6 +34,7 @@ func FeedToMail(filePath string, retry int) error {
 			feed, err = fp.ParseURL(subscription.URL)
 			log.Printf("parse rss url: %d, %s", cnt, subscription.URL)
 			if err == nil {
+				time.Sleep(2 * time.Second)
 				break
 			} else if cnt == retry {
 				log.Printf("HTTP request failed: %v", err)
