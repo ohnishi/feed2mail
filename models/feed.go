@@ -71,7 +71,7 @@ func FeedToMail(filePath string, retry int) error {
 		}
 	}
 
-	err = mailNotifyByResend(strings.Join(bodys, "\n"), "")
+	err = mailNotifyByResend(strings.Join(bodys, "\n"), retry)
 	if err != nil {
 		return err
 	}
