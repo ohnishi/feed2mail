@@ -20,7 +20,6 @@ var subscriptions = []models.Subscription{
 	{Title: "Publickey", URL: "https://www.publickey1.jp/atom.xml", Fetched: time.Time{}},
 	{Title: "梅屋敷商店街のランダム・ウォーカー", URL: "https://randomwalker.blog.fc2.com/?xml", Fetched: time.Time{}},
 	{Title: "まめきちまめこニートの日常", URL: "https://mamekichimameko.blog.jp/index.rdf", Fetched: time.Time{}},
-	{Title: "くるねこ大和", URL: "https://blog.goo.ne.jp/kuru0214/rss2.xml", Fetched: time.Time{}},
 	{Title: "しょぷーブログ", URL: "https://new-shopuublog.com/feed/", Fetched: time.Time{}},
 	{Title: "チェンソーマン", URL: "https://shonenjumpplus.com/rss/series/3270375685341574005", Fetched: time.Time{}},
 	{Title: "ワンパンマン", URL: "https://tonarinoyj.jp/rss/series/13932016480028984490", Fetched: time.Time{}},
@@ -65,7 +64,7 @@ func resetSubscriptions(dest string) error {
 }
 
 const (
-	maxRetry = 3
+	maxRetry = 10
 	saveFile = "cache/fetched.jsonl"
 )
 
