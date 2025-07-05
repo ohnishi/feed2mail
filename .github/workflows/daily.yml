@@ -1,9 +1,9 @@
-name: Daily Go Script Execution
+name: Daily Feed Execution
 
 on:
   schedule:
-    # 毎日 17:00 UTC に実行（JST では 2:00 AM）
-    - cron: '0 17 * * *'
+    # 毎日 8:00 UTC に実行（JST では 17:00）
+    - cron: '0 8 * * *'
 
   # 手動実行も可能にする
   workflow_dispatch:
@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: go mod download
 
-      - name: Run Go script
+      - name: Run Feed script
         run: go run main.go
         env:
           MAIL_APIKEY: ${{ secrets.MAIL_APIKEY }}
