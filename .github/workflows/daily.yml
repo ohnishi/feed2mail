@@ -29,11 +29,10 @@ jobs:
         env:
           MAIL_APIKEY: ${{ secrets.MAIL_APIKEY }}
 
-      # 必要に応じて結果をアーティファクトとして保存
-      - name: Upload results (optional)
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: execution-results
-          path: |
-            cache/fetched.jsonl
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add cache/fetched.jsonl
+          git diff --staged --quiet || git commit -m "Update fetched.jsonl from run ${{ github.run_number }}"
+          git push
