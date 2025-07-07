@@ -55,7 +55,8 @@ func resetSubscriptions(dest string) error {
 			}
 		}
 		if !isExists {
-			s.Fetched = time.Now().AddDate(0, 0, -1)
+			jst, _ := time.LoadLocation("Asia/Tokyo")
+			s.Fetched = time.Now().In(jst).AddDate(0, 0, -1)
 			newSubscriptions = append(newSubscriptions, s)
 		}
 	}
