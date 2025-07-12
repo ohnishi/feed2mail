@@ -10,6 +10,7 @@ import (
 var subscriptions = []models.Subscription{
 	{Title: "NHKニュース", URL: "https://www3.nhk.or.jp/rss/news/cat0.xml", Fetched: time.Time{}},
 	{Title: "はてなブックマーク", URL: "https://b.hatena.ne.jp/hotentry/it.rss", Fetched: time.Time{}},
+	{Title: "Zennのトレンド", URL: "https://zenn.dev/feed", Fetched: time.Time{}},
 	{Title: "Publickey", URL: "https://www.publickey1.jp/atom.xml", Fetched: time.Time{}},
 	{Title: "ITmedia", URL: "https://rss.itmedia.co.jp/rss/2.0/topstory.xml", Fetched: time.Time{}},
 	{Title: "CNET Japan", URL: "https://feeds.japan.cnet.com/rss/cnet/all.rdf", Fetched: time.Time{}},
