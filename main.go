@@ -24,12 +24,6 @@ var subscriptions = []models.Subscription{
 	{Title: "チェンソーマン", URL: "https://shonenjumpplus.com/rss/series/3270375685341574005", Fetched: time.Time{}},
 	{Title: "ワンパンマン", URL: "https://tonarinoyj.jp/rss/series/13932016480028984490", Fetched: time.Time{}},
 	{Title: "ダンダダン", URL: "https://shonenjumpplus.com/rss/series/3269632237310729745", Fetched: time.Time{}},
-	{Title: "久松剛", URL: "https://note.com/makaibito/rss", Fetched: time.Time{}},
-	{Title: "Amazon物販戦略家！わさびん土屋", URL: "https://note.com/wasabinbin/rss", Fetched: time.Time{}},
-	{Title: "ニケちゃん", URL: "https://note.com/nike_cha_n/rss", Fetched: time.Time{}},
-	{Title: "しろまるnote", URL: "https://note.com/asuka_shiromaru/rss", Fetched: time.Time{}},
-	{Title: "入江 慎吾", URL: "https://note.com/iritec/rss", Fetched: time.Time{}},
-	{Title: "セールモンスター", URL: "https://note.com/_salemonster/rss", Fetched: time.Time{}},
 	// {Title: "", URL: "", Fetched: time.Time{}},
 }
 
