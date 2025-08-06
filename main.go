@@ -33,6 +33,7 @@ var subscriptions = []models.Subscription{
 	{Title: "わさびん土屋", URL: "https://note.com/wasabinbin/rss", Fetched: time.Time{}},
 	{Title: "ニケちゃん", URL: "https://note.com/nike_cha_n/rss", Fetched: time.Time{}},
 	{Title: "安野貴博", URL: "https://note.com/takahiroanno/rss", Fetched: time.Time{}},
+	{Title: "牛尾　剛", URL: "https://note.com/simplearchitect/rss", Fetched: time.Time{}},
 	// {Title: "", URL: "", Fetched: time.Time{}},
 }
 
