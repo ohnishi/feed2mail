@@ -20,6 +20,7 @@ var subscriptions = []models.Subscription{
 	// {Title: "ROOMIE", URL: "https://www.roomie.jp/feed/", Fetched: time.Time{}},
 	{Title: "Zennのトレンド", URL: "https://zenn.dev/feed", Fetched: time.Time{}},
 	{Title: "Publickey", URL: "https://www.publickey1.jp/atom.xml", Fetched: time.Time{}},
+	{Title: "Findy Tech Blog", URL: "https://tech.findy.co.jp/rss", Fetched: time.Time{}},
 	{Title: "梅屋敷商店街のランダム・ウォーカー", URL: "https://randomwalker.blog.fc2.com/?xml", Fetched: time.Time{}},
 	{Title: "ビットバンクプラス", URL: "https://bitbank.cc/knowledge/feed", Fetched: time.Time{}},
 	{Title: "まめきちまめこニートの日常", URL: "https://mamekichimameko.blog.jp/index.rdf", Fetched: time.Time{}},
