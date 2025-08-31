@@ -64,6 +64,7 @@ var subscriptions = []models.Subscription{
 	{Title: "田舎そば川原", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCDzOfd9304g0cWmSameJNWw", Fetched: time.Time{}},
 	{Title: "Naokiman 2nd Channel", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCT9cFrlnfy1-XLf0Vuy0Zzw", Fetched: time.Time{}},
 	{Title: "Bappa Shota", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCcrpFRRYkH185Xb8D-JQT7Q", Fetched: time.Time{}},
+	{Title: "有隣堂しか知らない世界", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCmKlo3BXt60nzgk2r_JgvwQ", Fetched: time.Time{}},
 
 	// {Title: "", URL: "", Fetched: time.Time{}},
 }
