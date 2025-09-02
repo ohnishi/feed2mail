@@ -20,9 +20,7 @@ var subscriptions = []models.Subscription{
 	{Title: "ROOMIE", URL: "https://www.roomie.jp/feed/", Fetched: time.Time{}},
 	{Title: "Zennのトレンド", URL: "https://zenn.dev/feed", Fetched: time.Time{}},
 	{Title: "Publickey", URL: "https://www.publickey1.jp/atom.xml", Fetched: time.Time{}},
-	{Title: "Findy Tech Blog", URL: "https://tech.findy.co.jp/rss", Fetched: time.Time{}},
 	{Title: "梅屋敷商店街のランダム・ウォーカー", URL: "https://randomwalker.blog.fc2.com/?xml", Fetched: time.Time{}},
-	{Title: "ビットバンクプラス", URL: "https://bitbank.cc/knowledge/feed", Fetched: time.Time{}},
 	{Title: "まめきちまめこニートの日常", URL: "https://mamekichimameko.blog.jp/index.rdf", Fetched: time.Time{}},
 	{Title: "チェンソーマン", URL: "https://shonenjumpplus.com/rss/series/3270375685341574005", Fetched: time.Time{}},
 	{Title: "ワンパンマン", URL: "https://tonarinoyj.jp/rss/series/13932016480028984490", Fetched: time.Time{}},
@@ -61,10 +59,12 @@ var subscriptions = []models.Subscription{
 	{Title: "Newbee", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCS0Nxf1j4Jtfx2i9qTksezg", Fetched: time.Time{}},
 	{Title: "吉田研究所", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCLE2PTNDt--NLGLVbfOfHkQ", Fetched: time.Time{}},
 	{Title: "こぶしの板さん", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCVDMeXIV3elsm8mjWre-qIA", Fetched: time.Time{}},
+	{Title: "こぶしの山で!", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UC5_q8XHadgecavUCCYm96Gw", Fetched: time.Time{}},
 	{Title: "田舎そば川原", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCDzOfd9304g0cWmSameJNWw", Fetched: time.Time{}},
 	{Title: "Naokiman 2nd Channel", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCT9cFrlnfy1-XLf0Vuy0Zzw", Fetched: time.Time{}},
 	{Title: "Bappa Shota", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCcrpFRRYkH185Xb8D-JQT7Q", Fetched: time.Time{}},
 	{Title: "有隣堂しか知らない世界", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCmKlo3BXt60nzgk2r_JgvwQ", Fetched: time.Time{}},
+	{Title: "ぽんこつ鳩子", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCOs-jFefgxrwMZhK7AcjdMg", Fetched: time.Time{}},
 
 	// {Title: "", URL: "", Fetched: time.Time{}},
 }
