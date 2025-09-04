@@ -67,6 +67,7 @@ var subscriptions = []models.Subscription{
 	{Title: "ぽんこつ鳩子", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCOs-jFefgxrwMZhK7AcjdMg", Fetched: time.Time{}},
 	{Title: "ライアン鈴木", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCYxPWII5Kj5bCRuQ0whNN-Q", Fetched: time.Time{}},
 	{Title: "mikimiki", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UChxtIA33ty53Hh4MmkXNASg", Fetched: time.Time{}},
+	{Title: "LayerX 公式", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCKu0R6kOcqd62QstxKxoNhA", Fetched: time.Time{}},
 
 	// {Title: "", URL: "", Fetched: time.Time{}},
 }
