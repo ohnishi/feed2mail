@@ -65,6 +65,8 @@ var subscriptions = []models.Subscription{
 	{Title: "Bappa Shota", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCcrpFRRYkH185Xb8D-JQT7Q", Fetched: time.Time{}},
 	{Title: "有隣堂しか知らない世界", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCmKlo3BXt60nzgk2r_JgvwQ", Fetched: time.Time{}},
 	{Title: "ぽんこつ鳩子", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCOs-jFefgxrwMZhK7AcjdMg", Fetched: time.Time{}},
+	{Title: "ライアン鈴木", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCYxPWII5Kj5bCRuQ0whNN-Q", Fetched: time.Time{}},
+	{Title: "mikimiki", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UChxtIA33ty53Hh4MmkXNASg", Fetched: time.Time{}},
 
 	// {Title: "", URL: "", Fetched: time.Time{}},
 }
