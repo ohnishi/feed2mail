@@ -68,6 +68,7 @@ var subscriptions = []models.Subscription{
 	{Title: "ライアン鈴木", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCYxPWII5Kj5bCRuQ0whNN-Q", Fetched: time.Time{}},
 	{Title: "mikimiki", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UChxtIA33ty53Hh4MmkXNASg", Fetched: time.Time{}},
 	{Title: "LayerX 公式", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCKu0R6kOcqd62QstxKxoNhA", Fetched: time.Time{}},
+	{Title: "やりすぎ税理士の資産革命チャンネル", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCiY5ZQWukeZuSy3s8Ci8Vlw", Fetched: time.Time{}},
 
 	// {Title: "", URL: "", Fetched: time.Time{}},
 }
