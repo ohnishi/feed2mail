@@ -34,7 +34,6 @@ var subscriptions = []models.Subscription{
 
 	{Title: "オライリー", URL: "https://www.oreilly.co.jp/catalog/soon.xml", Fetched: time.Time{}},
 	{Title: "技術評論社", URL: "https://gihyo.jp/book/feed/rss1", Fetched: time.Time{}},
-	{Title: "インプレス", URL: "https://nextpublishing.jp/book/feed", Fetched: time.Time{}},
 
 	// {Title: "", URL: "", Fetched: time.Time{}},
 }
