@@ -45,6 +45,10 @@ func FeedToMail(filePath string, retry int) error {
 
 		siteBodys := []string{subscription.Title}
 		for _, item := range feed.Items {
+			if item.Published == "" {
+				continue
+			}
+
 			published, err := parseLocal(item.Published)
 			if err != nil {
 				return err
