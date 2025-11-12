@@ -26,6 +26,7 @@ func FeedToMail(filePath string, retry int) error {
 	}
 
 	var bodys []string
+	var itemLinkMap = make(map[string]struct{})
 	fp := gofeed.NewParser()
 	for i, subscription := range subscriptions {
 		var latest time.Time
@@ -58,9 +59,11 @@ func FeedToMail(filePath string, retry int) error {
 				latest = published
 			}
 
-			if subscription.Fetched.Before(published) {
+			_, ok := itemLinkMap[item.Link]
+			if subscription.Fetched.Before(published) && !ok {
 				siteBodys = append(siteBodys, "  - "+item.Title)
 				siteBodys = append(siteBodys, "    - "+item.Link)
+				itemLinkMap[item.Link] = struct{}{}
 			}
 		}
 		if len(siteBodys) > 1 {
