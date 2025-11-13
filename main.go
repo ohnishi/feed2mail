@@ -30,9 +30,10 @@ var subscriptions = []models.Subscription{
 	{Title: "セールモンスター", URL: "https://note.com/_salemonster/rss", Fetched: time.Time{}},
 	{Title: "久松剛", URL: "https://note.com/makaibito/rss", Fetched: time.Time{}},
 	{Title: "わさびん土屋", URL: "https://note.com/wasabinbin/rss", Fetched: time.Time{}},
-	// {Title: "ニケちゃん", URL: "https://note.com/nike_cha_n/rss", Fetched: time.Time{}},
-	// {Title: "安野貴博", URL: "https://note.com/takahiroanno/rss", Fetched: time.Time{}},
+	{Title: "ニケちゃん", URL: "https://note.com/nike_cha_n/rss", Fetched: time.Time{}},
+	{Title: "安野貴博", URL: "https://note.com/takahiroanno/rss", Fetched: time.Time{}},
 	{Title: "牛尾剛", URL: "https://note.com/simplearchitect/rss", Fetched: time.Time{}},
+	{Title: "入江慎吾", URL: "https://note.com/iritec/rss", Fetched: time.Time{}},
 
 	{Title: "オライリー", URL: "https://www.oreilly.co.jp/catalog/soon.xml", Fetched: time.Time{}},
 	{Title: "技術評論社", URL: "https://gihyo.jp/book/feed/rss1", Fetched: time.Time{}},
