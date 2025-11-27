@@ -18,7 +18,7 @@ var subscriptions = []models.Subscription{
 	{Title: "Zennのトレンド", URL: "https://zenn.dev/feed", Fetched: time.Time{}},
 	{Title: "Publickey", URL: "https://www.publickey1.jp/atom.xml", Fetched: time.Time{}},
 	{Title: "梅屋敷商店街のランダム・ウォーカー", URL: "https://randomwalker.blog.fc2.com/?xml", Fetched: time.Time{}},
-	{Title: "たつをの ChangeLog", URL: "https://chalow.net/cl.rdf", Fetched: time.Time{}},
+	// {Title: "たつをの ChangeLog", URL: "https://chalow.net/cl.rdf", Fetched: time.Time{}},
 	{Title: "市況かぶ全力２階建", URL: "https://kabumatome.doorblog.jp/atom.xml", Fetched: time.Time{}},
 
 	{Title: "まめきちまめこニートの日常", URL: "https://mamekichimameko.blog.jp/index.rdf", Fetched: time.Time{}},
