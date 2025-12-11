@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
+	"net/http"
 	"os"
 	"path/filepath"
 	"strings"
@@ -25,9 +26,18 @@ func FeedToMail(filePath string, retry int) error {
 		return err
 	}
 
+	// 🌟 修正点 1: タイムアウト設定を持つカスタムクライアントを作成 🌟
+	// 接続確立から応答受信までの合計タイムアウトを30秒に設定
+	httpClient := &http.Client{
+		Timeout: 30 * time.Second,
+	}
+
+	fp := gofeed.NewParser()
+	fp.Client = httpClient // カスタムクライアントをParserに設定
+
 	var bodys []string
 	var itemLinkMap = make(map[string]struct{})
-	fp := gofeed.NewParser()
+
 	for i, subscription := range subscriptions {
 		var latest time.Time
 		var feed *gofeed.Feed
@@ -35,7 +45,7 @@ func FeedToMail(filePath string, retry int) error {
 			feed, err = fp.ParseURL(subscription.URL)
 			log.Printf("parse rss url: %d, %s", cnt, subscription.URL)
 			if err == nil {
-				time.Sleep(3 * time.Second)
+				time.Sleep(3 * time.Second * time.Duration(cnt)) // リトライごとに待機時間を増加
 				break
 			} else if cnt == retry {
 				log.Printf("HTTP request failed: %v", err)
