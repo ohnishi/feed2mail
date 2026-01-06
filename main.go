@@ -15,7 +15,7 @@ var subscriptions = []models.Subscription{
 	// {Title: "INTERNET Watch", URL: "https://internet.watch.impress.co.jp/data/rss/1.0/iw/feed.rdf", Fetched: time.Time{}},
 	// {Title: "GIZMODO JAPAN", URL: "https://www.gizmodo.jp/index.xml", Fetched: time.Time{}},
 	// {Title: "窓の杜", URL: "https://forest.watch.impress.co.jp/data/rss/1.0/wf/feed.rdf", Fetched: time.Time{}},
-	{Title: "Qiita", URL: "https://qiita.com/popular-items/feed.atom", Fetched: time.Time{}},
+	// {Title: "Qiita", URL: "https://qiita.com/popular-items/feed.atom", Fetched: time.Time{}},
 	{Title: "Zenn", URL: "https://zenn.dev/feed", Fetched: time.Time{}},
 	{Title: "Publickey", URL: "https://www.publickey1.jp/atom.xml", Fetched: time.Time{}},
 	{Title: "市況かぶ全力２階建", URL: "https://kabumatome.doorblog.jp/atom.xml", Fetched: time.Time{}},
@@ -26,7 +26,7 @@ var subscriptions = []models.Subscription{
 	{Title: "ダンダダン", URL: "https://shonenjumpplus.com/rss/series/3269632237310729745", Fetched: time.Time{}},
 
 	{Title: "しろまるnote", URL: "https://note.com/asuka_shiromaru/rss", Fetched: time.Time{}},
-	{Title: "セールモンスター", URL: "https://note.com/_salemonster/rss", Fetched: time.Time{}},
+	// {Title: "セールモンスター", URL: "https://note.com/_salemonster/rss", Fetched: time.Time{}},
 	{Title: "久松剛", URL: "https://note.com/makaibito/rss", Fetched: time.Time{}},
 	{Title: "わさびん土屋", URL: "https://note.com/wasabinbin/rss", Fetched: time.Time{}},
 	{Title: "ニケちゃん", URL: "https://note.com/nike_cha_n/rss", Fetched: time.Time{}},
@@ -39,6 +39,8 @@ var subscriptions = []models.Subscription{
 
 	{Title: "オライリー", URL: "https://www.oreilly.co.jp/catalog/soon.xml", Fetched: time.Time{}},
 	{Title: "技術評論社", URL: "https://gihyo.jp/book/feed/rss1", Fetched: time.Time{}},
+
+	{Title: "TBS NEWS DIG Powered by JNN", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UC6AG81pAkf6Lbi_1VC5NmPA", Fetched: time.Time{}},
 
 	// {Title: "", URL: "", Fetched: time.Time{}},
 }
