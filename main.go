@@ -40,7 +40,45 @@ var subscriptions = []models.Subscription{
 	{Title: "オライリー", URL: "https://www.oreilly.co.jp/catalog/soon.xml", Fetched: time.Time{}},
 	{Title: "技術評論社", URL: "https://gihyo.jp/book/feed/rss1", Fetched: time.Time{}},
 
-	{Title: "TBS NEWS DIG Powered by JNN", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UC6AG81pAkf6Lbi_1VC5NmPA", Fetched: time.Time{}},
+	{Title: "TBS NEWS DIG Powered by JNN", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCMO-lX7Y0K7c-BaV9RatboQ", Fetched: time.Time{}},
+
+	{Title: "楽待", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCPMJKbrxtpARoTd1b49iUvA", Fetched: time.Time{}},
+	{Title: "KabuBerry Channel", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UC3z7uU4ybkh9Pkz5A0-QGYA", Fetched: time.Time{}},
+	{Title: "湘南投資勉強会オンライン", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCLJ7mt8d0GbJs74PTPlREYg", Fetched: time.Time{}},
+	{Title: "不動産Gメン滝島", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCv9GARGGn0LpNq7QHQVZp2A", Fetched: time.Time{}},
+	{Title: "田端大学", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UC7sEB_ylMuHJD4TjF4Ag1nw", Fetched: time.Time{}},
+	{Title: "中国まる見え情報局", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCgv73JUFDUd_nIulI_VECKQ", Fetched: time.Time{}},
+
+	{Title: "物販NAVI", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UC6AG81pAkf6Lbi_1VC5NmPA", Fetched: time.Time{}},
+	{Title: "中古カメラ現物投資家 船田ひろし", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCcph2C76gdSHXUbd3wooNfQ", Fetched: time.Time{}},
+	{Title: "脱サラした男のネットショップな日常", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCfCkw1ugUhc9Nw_wu1cKHpw", Fetched: time.Time{}},
+	{Title: "かわしま＠中国輸入", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCW_Ey8M8I3o1JCB2OyCYzHA", Fetched: time.Time{}},
+	{Title: "こーいち【中国輸入Amazon販売】", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCqmEmvM6rt3iTYiTv-PRI0g", Fetched: time.Time{}},
+	{Title: "Tasチャンネル", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UC96v4EM1wETxpqrK2WqrFNw", Fetched: time.Time{}},
+	{Title: "Tasの物販作業部屋", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCmzbvkNJEubCV9pKfYfPlpA", Fetched: time.Time{}},
+	{Title: "TasのEC支援", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCtFFMu0IO0CMmHkZyOqTMjg", Fetched: time.Time{}},
+	{Title: "RAKUMART", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCgW9fypC1UpPsIF1m4Ph5eA", Fetched: time.Time{}},
+	{Title: "Amazonで売る【公式】", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCPBWwGeO-vbrsOCGrd0_rrA", Fetched: time.Time{}},
+
+	{Title: "ミスターフルスイングch", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCoryrORUTuHoSkryhk0K8bA", Fetched: time.Time{}},
+	{Title: "MLBコアラ", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCQTnU6pFNEsOJWHSdj7Y5qA", Fetched: time.Time{}},
+
+	{Title: "TECH WORLD", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCISDrqLMNq3w9AZ4otdoRuA", Fetched: time.Time{}},
+	{Title: "テックナビ", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCB3mOPzHaD-K1n7YlubgOqA", Fetched: time.Time{}},
+	{Title: "中島聡のLife is Beautiful", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCtjRA-7EuBmyWMyty1HZAPQ", Fetched: time.Time{}},
+	{Title: "中村祐太のFindUアカデミー", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCNyN5h_EJ1ktJoTODTD6DyA", Fetched: time.Time{}},
+	{Title: "入江慎吾", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UC3wNxV5ZWOL9kf4v2oXGQbw", Fetched: time.Time{}},
+	{Title: "AI Engineer", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCLKPca3kwwd-B59HNr-_lvA", Fetched: time.Time{}},
+	{Title: "Vanessa Wingårdh", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UC2Bm4qXVUx9Md-hmHz3WuXw", Fetched: time.Time{}},
+
+	{Title: "Naokiman Show", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UC4lN5sizuJraSHqy99xTy6Q", Fetched: time.Time{}},
+	{Title: "Naokiman 2nd Channel", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCT9cFrlnfy1-XLf0Vuy0Zzw", Fetched: time.Time{}},
+
+	{Title: "ゆうひなたチャンネル", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UC-MjY-iABWP-JZOzwnuwLWg", Fetched: time.Time{}},
+	{Title: "Bappa Shota", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCcrpFRRYkH185Xb8D-JQT7Q", Fetched: time.Time{}},
+	{Title: "ビビりの家族が行くキャンピングカー生活", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UC-YMyraUiYnA1c8IMy-JjGA", Fetched: time.Time{}},
+	{Title: "スタイリスト大山シュンのメンズ服講座", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCRf_7nS9lxLZFfK6kJBvK5A", Fetched: time.Time{}},
+	{Title: "Living Big In A Tiny House", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCoNTMWgGuXtGPLv9UeJZwBw", Fetched: time.Time{}},
 
 	// {Title: "", URL: "", Fetched: time.Time{}},
 }
