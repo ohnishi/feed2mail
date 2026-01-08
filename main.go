@@ -79,6 +79,7 @@ var subscriptions = []models.Subscription{
 	{Title: "ビビりの家族が行くキャンピングカー生活", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UC-YMyraUiYnA1c8IMy-JjGA", Fetched: time.Time{}},
 	{Title: "スタイリスト大山シュンのメンズ服講座", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCRf_7nS9lxLZFfK6kJBvK5A", Fetched: time.Time{}},
 	{Title: "Living Big In A Tiny House", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCoNTMWgGuXtGPLv9UeJZwBw", Fetched: time.Time{}},
+	{Title: "JOJO Channel<", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCx8E8jP6tH1ZSRVYklgu_Dg", Fetched: time.Time{}},
 
 	// {Title: "", URL: "", Fetched: time.Time{}},
 }
