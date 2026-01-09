@@ -63,6 +63,7 @@ var subscriptions = []models.Subscription{
 
 	{Title: "ミスターフルスイングch", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCoryrORUTuHoSkryhk0K8bA", Fetched: time.Time{}},
 	{Title: "MLBコアラ", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCQTnU6pFNEsOJWHSdj7Y5qA", Fetched: time.Time{}},
+	{Title: "全力野球少年", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCMH6sSHDQt6yDwFjbask4OQ", Fetched: time.Time{}},
 
 	{Title: "TECH WORLD", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCISDrqLMNq3w9AZ4otdoRuA", Fetched: time.Time{}},
 	{Title: "テックナビ", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCB3mOPzHaD-K1n7YlubgOqA", Fetched: time.Time{}},
@@ -81,6 +82,7 @@ var subscriptions = []models.Subscription{
 	{Title: "スタイリスト大山シュンのメンズ服講座", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCRf_7nS9lxLZFfK6kJBvK5A", Fetched: time.Time{}},
 	{Title: "Living Big In A Tiny House", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCoNTMWgGuXtGPLv9UeJZwBw", Fetched: time.Time{}},
 	{Title: "JOJO Channel<", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCx8E8jP6tH1ZSRVYklgu_Dg", Fetched: time.Time{}},
+	{Title: "聖女イトコイザーさん【仮】", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UC5Ou3Sy_86_pfHlZf7v-REw", Fetched: time.Time{}},
 
 	// {Title: "", URL: "", Fetched: time.Time{}},
 }
