@@ -44,6 +44,7 @@ var subscriptions = []models.Subscription{
 	{Title: "Yahoo!ニュース", URL: "https://news.yahoo.co.jp/rss/topics/top-picks.xml", Fetched: time.Time{}},
 	// {Title: "日経電子版", URL: "https://news.google.com/rss/search?q=site:nikkei.com&hl=ja&gl=JP&ceid=JP:ja", Fetched: time.Time{}},
 	{Title: "NewsPicks", URL: "https://news.google.com/rss/search?q=site:newspicks.com&hl=ja&gl=JP&ceid=JP:ja", Fetched: time.Time{}},
+	{Title: "四季報オンライン", URL: "https://news.google.com/rss/search?q=site:shikiho.toyokeizai.net&hl=ja&gl=JP&ceid=JP:ja", Fetched: time.Time{}},
 
 	{Title: "楽待", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCPMJKbrxtpARoTd1b49iUvA", Fetched: time.Time{}},
 	{Title: "KabuBerry Channel", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UC3z7uU4ybkh9Pkz5A0-QGYA", Fetched: time.Time{}},
