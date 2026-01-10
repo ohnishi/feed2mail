@@ -49,6 +49,12 @@ var subscriptions = []models.Subscription{
 	{Title: "不動産Gメン滝島", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCv9GARGGn0LpNq7QHQVZp2A", Fetched: time.Time{}},
 	{Title: "田端大学", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UC7sEB_ylMuHJD4TjF4Ag1nw", Fetched: time.Time{}},
 	{Title: "中国まる見え情報局", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCgv73JUFDUd_nIulI_VECKQ", Fetched: time.Time{}},
+	{Title: "勝間和代が徹底的にマニアックな話をするYouTube", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCWoiNwdr7EEjgs2waxe_QpA", Fetched: time.Time{}},
+	{Title: "テレ東AIアカデミー【公式】", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCtadcNeydAUCkcUF5t5YNtw", Fetched: time.Time{}},
+	{Title: "ReHacQ−リハック−【公式】", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCG_oqDSlIYEspNpd2H4zWhw", Fetched: time.Time{}},
+	{Title: "テレ東BIZ ダイジェスト", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCkKVQ_GNjd8FbAuT6xDcWgg", Fetched: time.Time{}},
+	{Title: "PIVOT 公式チャンネル", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UC8yHePe_RgUBE-waRWy6olw", Fetched: time.Time{}},
+	{Title: "文藝春秋PLUS 公式チャンネル", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCTcJVDgfw411rqWCHb-16lg", Fetched: time.Time{}},
 
 	{Title: "物販NAVI", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCMO-lX7Y0K7c-BaV9RatboQ", Fetched: time.Time{}},
 	{Title: "中古カメラ現物投資家 船田ひろし", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCcph2C76gdSHXUbd3wooNfQ", Fetched: time.Time{}},
