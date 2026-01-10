@@ -40,8 +40,9 @@ var subscriptions = []models.Subscription{
 	{Title: "オライリー", URL: "https://www.oreilly.co.jp/catalog/soon.xml", Fetched: time.Time{}},
 	{Title: "技術評論社", URL: "https://gihyo.jp/book/feed/rss1", Fetched: time.Time{}},
 
-	{Title: "TBS NEWS DIG Powered by JNN", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UC6AG81pAkf6Lbi_1VC5NmPA", Fetched: time.Time{}},
 	{Title: "Yahoo!ニュース", URL: "https://news.yahoo.co.jp/rss/topics/top-picks.xml", Fetched: time.Time{}},
+	{Title: "日経電子版", URL: "https://news.google.com/rss/search?q=site:nikkei.com&hl=ja&gl=JP&ceid=JP:ja", Fetched: time.Time{}},
+	{Title: "NewsPicks", URL: "https://news.google.com/rss/search?q=site:newspicks.com&hl=ja&gl=JP&ceid=JP:ja", Fetched: time.Time{}},
 
 	{Title: "楽待", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCPMJKbrxtpARoTd1b49iUvA", Fetched: time.Time{}},
 	{Title: "KabuBerry Channel", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UC3z7uU4ybkh9Pkz5A0-QGYA", Fetched: time.Time{}},
@@ -55,6 +56,7 @@ var subscriptions = []models.Subscription{
 	{Title: "テレ東BIZ ダイジェスト", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCkKVQ_GNjd8FbAuT6xDcWgg", Fetched: time.Time{}},
 	{Title: "PIVOT 公式チャンネル", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UC8yHePe_RgUBE-waRWy6olw", Fetched: time.Time{}},
 	{Title: "文藝春秋PLUS 公式チャンネル", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCTcJVDgfw411rqWCHb-16lg", Fetched: time.Time{}},
+	{Title: "TBS NEWS DIG Powered by JNN", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UC6AG81pAkf6Lbi_1VC5NmPA", Fetched: time.Time{}},
 
 	{Title: "物販NAVI", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCMO-lX7Y0K7c-BaV9RatboQ", Fetched: time.Time{}},
 	{Title: "中古カメラ現物投資家 船田ひろし", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCcph2C76gdSHXUbd3wooNfQ", Fetched: time.Time{}},
@@ -67,9 +69,10 @@ var subscriptions = []models.Subscription{
 	{Title: "RAKUMART", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCgW9fypC1UpPsIF1m4Ph5eA", Fetched: time.Time{}},
 	{Title: "Amazonで売る【公式】", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCPBWwGeO-vbrsOCGrd0_rrA", Fetched: time.Time{}},
 
-	{Title: "ミスターフルスイングch", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCoryrORUTuHoSkryhk0K8bA", Fetched: time.Time{}},
 	{Title: "MLBコアラ", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCQTnU6pFNEsOJWHSdj7Y5qA", Fetched: time.Time{}},
 	{Title: "全力野球少年", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCMH6sSHDQt6yDwFjbask4OQ", Fetched: time.Time{}},
+	{Title: "ミスターフルスイングch", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCoryrORUTuHoSkryhk0K8bA", Fetched: time.Time{}},
+	{Title: "プロ野球のおもいでch", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCArbMa_kKr91pH0KkzQsEkA", Fetched: time.Time{}},
 
 	{Title: "TECH WORLD", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCISDrqLMNq3w9AZ4otdoRuA", Fetched: time.Time{}},
 	{Title: "テックナビ", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCB3mOPzHaD-K1n7YlubgOqA", Fetched: time.Time{}},
