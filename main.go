@@ -19,6 +19,7 @@ var subscriptions = []models.Subscription{
 	{Title: "Zenn", URL: "https://zenn.dev/feed", Fetched: time.Time{}},
 	{Title: "Publickey", URL: "https://www.publickey1.jp/atom.xml", Fetched: time.Time{}},
 	{Title: "市況かぶ全力２階建", URL: "https://kabumatome.doorblog.jp/atom.xml", Fetched: time.Time{}},
+	{Title: "勝間和代が徹底的にマニアックな話をアップするブログ", URL: "https://katsumakazuyo.hatenablog.com/rss", Fetched: time.Time{}},
 
 	{Title: "まめきちまめこニートの日常", URL: "https://mamekichimameko.blog.jp/index.rdf", Fetched: time.Time{}},
 	{Title: "チェンソーマン", URL: "https://shonenjumpplus.com/rss/series/3270375685341574005", Fetched: time.Time{}},
@@ -41,7 +42,7 @@ var subscriptions = []models.Subscription{
 	{Title: "技術評論社", URL: "https://gihyo.jp/book/feed/rss1", Fetched: time.Time{}},
 
 	{Title: "Yahoo!ニュース", URL: "https://news.yahoo.co.jp/rss/topics/top-picks.xml", Fetched: time.Time{}},
-	{Title: "日経電子版", URL: "https://news.google.com/rss/search?q=site:nikkei.com&hl=ja&gl=JP&ceid=JP:ja", Fetched: time.Time{}},
+	// {Title: "日経電子版", URL: "https://news.google.com/rss/search?q=site:nikkei.com&hl=ja&gl=JP&ceid=JP:ja", Fetched: time.Time{}},
 	{Title: "NewsPicks", URL: "https://news.google.com/rss/search?q=site:newspicks.com&hl=ja&gl=JP&ceid=JP:ja", Fetched: time.Time{}},
 
 	{Title: "楽待", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCPMJKbrxtpARoTd1b49iUvA", Fetched: time.Time{}},
