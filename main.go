@@ -59,7 +59,7 @@ var subscriptions = []models.Subscription{
 	{Title: "PIVOT 公式チャンネル", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UC8yHePe_RgUBE-waRWy6olw", Fetched: time.Time{}},
 	{Title: "文藝春秋PLUS 公式チャンネル", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCTcJVDgfw411rqWCHb-16lg", Fetched: time.Time{}},
 	{Title: "TBS NEWS DIG Powered by JNN", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UC6AG81pAkf6Lbi_1VC5NmPA", Fetched: time.Time{}},
-	{Title: "ダイヤモンド社 THE BOOKS", URL: "view-source:https://www.youtube.com/feeds/videos.xml?channel_id=UChyLk7utaMRsA7qZ6zT8UUg", Fetched: time.Time{}},
+	{Title: "ダイヤモンド社 THE BOOKS", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UChyLk7utaMRsA7qZ6zT8UUg", Fetched: time.Time{}},
 	{Title: "NewsPicks 動画", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCfTnJmRQP79C4y_BMF_XrlA", Fetched: time.Time{}},
 
 	{Title: "物販NAVI", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCMO-lX7Y0K7c-BaV9RatboQ", Fetched: time.Time{}},
