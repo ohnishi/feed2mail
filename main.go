@@ -73,6 +73,7 @@ var subscriptions = []models.Subscription{
 	{Title: "TasのEC支援", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCtFFMu0IO0CMmHkZyOqTMjg", Fetched: time.Time{}},
 	{Title: "RAKUMART", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCgW9fypC1UpPsIF1m4Ph5eA", Fetched: time.Time{}},
 	{Title: "Amazonで売る【公式】", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCPBWwGeO-vbrsOCGrd0_rrA", Fetched: time.Time{}},
+	{Title: "ERESA イーリサ ®公式チャンネル", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCiiO8UnzTfwk1EflGir1VyQ", Fetched: time.Time{}},
 
 	{Title: "MLBコアラ", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCQTnU6pFNEsOJWHSdj7Y5qA", Fetched: time.Time{}},
 	{Title: "全力野球少年", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCMH6sSHDQt6yDwFjbask4OQ", Fetched: time.Time{}},
@@ -86,6 +87,7 @@ var subscriptions = []models.Subscription{
 	{Title: "入江慎吾", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UC3wNxV5ZWOL9kf4v2oXGQbw", Fetched: time.Time{}},
 	{Title: "AI Engineer", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCLKPca3kwwd-B59HNr-_lvA", Fetched: time.Time{}},
 	{Title: "Vanessa Wingårdh", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UC2Bm4qXVUx9Md-hmHz3WuXw", Fetched: time.Time{}},
+	{Title: "プログラミングチュートリアル", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCNTxclE0N4qsUuirssL_D8w", Fetched: time.Time{}},
 
 	{Title: "Naokiman Show", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UC4lN5sizuJraSHqy99xTy6Q", Fetched: time.Time{}},
 	{Title: "Naokiman 2nd Channel", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCT9cFrlnfy1-XLf0Vuy0Zzw", Fetched: time.Time{}},
