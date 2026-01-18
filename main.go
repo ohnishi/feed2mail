@@ -59,9 +59,13 @@ var subscriptions = []models.Subscription{
 	{Title: "テレ東BIZ ダイジェスト", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCkKVQ_GNjd8FbAuT6xDcWgg", Fetched: time.Time{}},
 	{Title: "PIVOT 公式チャンネル", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UC8yHePe_RgUBE-waRWy6olw", Fetched: time.Time{}},
 	{Title: "文藝春秋PLUS 公式チャンネル", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCTcJVDgfw411rqWCHb-16lg", Fetched: time.Time{}},
+	{Title: "TBS CROSS DIG with Bloomberg", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCeCmAYh1ylwIsgGrmqaklzg", Fetched: time.Time{}},
 	// {Title: "TBS NEWS DIG Powered by JNN", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UC6AG81pAkf6Lbi_1VC5NmPA", Fetched: time.Time{}},
 	{Title: "ダイヤモンド社 THE BOOKS", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UChyLk7utaMRsA7qZ6zT8UUg", Fetched: time.Time{}},
 	{Title: "NewsPicks 動画", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCfTnJmRQP79C4y_BMF_XrlA", Fetched: time.Time{}},
+	{Title: "【公式】マーケット・アナライズ", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCJ1DVBLVpe4FvBZZ94kreaQ", Fetched: time.Time{}},
+	{Title: "脱・税理士スガワラくん", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCwKupwJ1EpdNH8Z98SKjY2Q", Fetched: time.Time{}},
+	{Title: "税理士YouTuberチャンネル!! / ヒロ税理士", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UC1nVq5-LTEdUVmr5FLfkd7A", Fetched: time.Time{}},
 
 	{Title: "物販NAVI", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCMO-lX7Y0K7c-BaV9RatboQ", Fetched: time.Time{}},
 	{Title: "中古カメラ現物投資家 船田ひろし", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCcph2C76gdSHXUbd3wooNfQ", Fetched: time.Time{}},
@@ -79,6 +83,7 @@ var subscriptions = []models.Subscription{
 	{Title: "全力野球少年", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCMH6sSHDQt6yDwFjbask4OQ", Fetched: time.Time{}},
 	{Title: "ミスターフルスイングch", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCoryrORUTuHoSkryhk0K8bA", Fetched: time.Time{}},
 	{Title: "プロ野球のおもいでch", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCArbMa_kKr91pH0KkzQsEkA", Fetched: time.Time{}},
+	{Title: "MLBミュージアム", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCETF63U56Mkv8rOVPoKAj8Q", Fetched: time.Time{}},
 
 	{Title: "TECH WORLD", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCISDrqLMNq3w9AZ4otdoRuA", Fetched: time.Time{}},
 	{Title: "テックナビ", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCB3mOPzHaD-K1n7YlubgOqA", Fetched: time.Time{}},
@@ -99,6 +104,8 @@ var subscriptions = []models.Subscription{
 	{Title: "Living Big In A Tiny House", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCoNTMWgGuXtGPLv9UeJZwBw", Fetched: time.Time{}},
 	{Title: "JOJO Channel<", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCx8E8jP6tH1ZSRVYklgu_Dg", Fetched: time.Time{}},
 	{Title: "聖女イトコイザーさん【仮】", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UC5Ou3Sy_86_pfHlZf7v-REw", Fetched: time.Time{}},
+	{Title: "ゲームさんぽ /よそ見", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCcTuSuH_yELJQYU6YZUHsAA", Fetched: time.Time{}},
+	{Title: "ゲームさんぽ /ライブドアニュース", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCipDXt4RWahzz-uplqYyz0A", Fetched: time.Time{}},
 
 	// {Title: "", URL: "", Fetched: time.Time{}},
 }
