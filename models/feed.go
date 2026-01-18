@@ -1,3 +1,4 @@
+// Package models は、このプログラムのエントリポイントを提供します。
 package models
 
 import (
