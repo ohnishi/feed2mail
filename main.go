@@ -18,7 +18,6 @@ var subscriptions = []models.Subscription{
 	{Title: "The GitHub Blog", URL: "https://github.blog/feed/", Fetched: time.Time{}},
 
 	{Title: "まめきちまめこニートの日常", URL: "https://mamekichimameko.blog.jp/index.rdf", Fetched: time.Time{}},
-	{Title: "チェンソーマン", URL: "https://shonenjumpplus.com/rss/series/3270375685341574005", Fetched: time.Time{}},
 	{Title: "ワンパンマン", URL: "https://tonarinoyj.jp/rss/series/13932016480028984490", Fetched: time.Time{}},
 	{Title: "ダンダダン", URL: "https://shonenjumpplus.com/rss/series/3269632237310729745", Fetched: time.Time{}},
 
@@ -46,9 +45,6 @@ var subscriptions = []models.Subscription{
 	{Title: "脱サラした男のネットショップな日常", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCfCkw1ugUhc9Nw_wu1cKHpw", Fetched: time.Time{}},
 	{Title: "かわしま＠中国輸入", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCW_Ey8M8I3o1JCB2OyCYzHA", Fetched: time.Time{}},
 	{Title: "こーいち【中国輸入Amazon販売】", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCqmEmvM6rt3iTYiTv-PRI0g", Fetched: time.Time{}},
-	{Title: "Tasチャンネル", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UC96v4EM1wETxpqrK2WqrFNw", Fetched: time.Time{}},
-	{Title: "Tasの物販作業部屋", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCmzbvkNJEubCV9pKfYfPlpA", Fetched: time.Time{}},
-	{Title: "TasのEC支援", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCtFFMu0IO0CMmHkZyOqTMjg", Fetched: time.Time{}},
 	{Title: "RAKUMART", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCgW9fypC1UpPsIF1m4Ph5eA", Fetched: time.Time{}},
 	{Title: "Amazonで売る【公式】", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCPBWwGeO-vbrsOCGrd0_rrA", Fetched: time.Time{}},
 	{Title: "ERESA イーリサ ®公式チャンネル", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCiiO8UnzTfwk1EflGir1VyQ", Fetched: time.Time{}},
