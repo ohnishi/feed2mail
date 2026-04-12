@@ -31,6 +31,7 @@ var subscriptions = []models.Subscription{
 	{Title: "のすけ", URL: "https://note.com/nosuke0926/rss", Fetched: time.Time{}},
 	{Title: "五月（片山晃）", URL: "https://note.com/may5x/rss", Fetched: time.Time{}},
 	{Title: "唐鎌大輔", URL: "https://note.com/dkarakama/rss", Fetched: time.Time{}},
+	{Title: "ジェネトピ", URL: "https://note.com/genai_topic/rss", Fetched: time.Time{}},
 
 	{Title: "オライリー", URL: "https://www.oreilly.co.jp/catalog/soon.xml", Fetched: time.Time{}},
 	{Title: "技術評論社", URL: "https://gihyo.jp/book/feed/rss1", Fetched: time.Time{}},
