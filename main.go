@@ -15,7 +15,7 @@ var subscriptions = []models.Subscription{
 	{Title: "Publickey", URL: "https://www.publickey1.jp/atom.xml", Fetched: time.Time{}},
 	// {Title: "市況かぶ全力２階建", URL: "https://kabumatome.doorblog.jp/atom.xml", Fetched: time.Time{}},
 	// {Title: "勝間和代が徹底的にマニアックな話をアップするブログ", URL: "https://katsumakazuyo.hatenablog.com/rss", Fetched: time.Time{}},
-	{Title: "The GitHub Blog", URL: "https://github.blog/feed/", Fetched: time.Time{}},
+	// {Title: "The GitHub Blog", URL: "https://github.blog/feed/", Fetched: time.Time{}},
 	{Title: "梅屋敷商店街のランダム・ウォーカー", URL: "https://randomwalker.blog.fc2.com/?xml", Fetched: time.Time{}},
 
 	{Title: "まめきちまめこニートの日常", URL: "https://mamekichimameko.blog.jp/index.rdf", Fetched: time.Time{}},
@@ -24,16 +24,16 @@ var subscriptions = []models.Subscription{
 	{Title: "ダンダダン", URL: "https://shonenjumpplus.com/rss/series/3269632237310729745", Fetched: time.Time{}},
 
 	{Title: "しろまるnote", URL: "https://note.com/asuka_shiromaru/rss", Fetched: time.Time{}},
-	{Title: "久松剛", URL: "https://note.com/makaibito/rss", Fetched: time.Time{}},
+	// {Title: "久松剛", URL: "https://note.com/makaibito/rss", Fetched: time.Time{}},
 	{Title: "わさびん土屋", URL: "https://note.com/wasabinbin/rss", Fetched: time.Time{}},
-	{Title: "ニケちゃん", URL: "https://note.com/nike_cha_n/rss", Fetched: time.Time{}},
-	{Title: "安野貴博", URL: "https://note.com/takahiroanno/rss", Fetched: time.Time{}},
+	// {Title: "ニケちゃん", URL: "https://note.com/nike_cha_n/rss", Fetched: time.Time{}},
+	// {Title: "安野貴博", URL: "https://note.com/takahiroanno/rss", Fetched: time.Time{}},
 	{Title: "牛尾剛", URL: "https://note.com/simplearchitect/rss", Fetched: time.Time{}},
-	{Title: "入江慎吾", URL: "https://note.com/iritec/rss", Fetched: time.Time{}},
-	{Title: "のすけ", URL: "https://note.com/nosuke0926/rss", Fetched: time.Time{}},
+	// {Title: "入江慎吾", URL: "https://note.com/iritec/rss", Fetched: time.Time{}},
+	// {Title: "のすけ", URL: "https://note.com/nosuke0926/rss", Fetched: time.Time{}},
 	{Title: "五月（片山晃）", URL: "https://note.com/may5x/rss", Fetched: time.Time{}},
-	{Title: "唐鎌大輔", URL: "https://note.com/dkarakama/rss", Fetched: time.Time{}},
-	{Title: "ジェネトピ", URL: "https://note.com/genai_topic/rss", Fetched: time.Time{}},
+	// {Title: "唐鎌大輔", URL: "https://note.com/dkarakama/rss", Fetched: time.Time{}},
+	// {Title: "ジェネトピ", URL: "https://note.com/genai_topic/rss", Fetched: time.Time{}},
 
 	{Title: "オライリー", URL: "https://www.oreilly.co.jp/catalog/soon.xml", Fetched: time.Time{}},
 	{Title: "技術評論社", URL: "https://gihyo.jp/book/feed/rss1", Fetched: time.Time{}},
@@ -50,7 +50,7 @@ var subscriptions = []models.Subscription{
 	{Title: "こーいち【中国輸入Amazon販売】", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCqmEmvM6rt3iTYiTv-PRI0g", Fetched: time.Time{}},
 	{Title: "RAKUMART", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCgW9fypC1UpPsIF1m4Ph5eA", Fetched: time.Time{}},
 	{Title: "Amazonで売る【公式】", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCPBWwGeO-vbrsOCGrd0_rrA", Fetched: time.Time{}},
-	{Title: "ERESA イーリサ ®公式チャンネル", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCiiO8UnzTfwk1EflGir1VyQ", Fetched: time.Time{}},
+	// {Title: "ERESA イーリサ ®公式チャンネル", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCiiO8UnzTfwk1EflGir1VyQ", Fetched: time.Time{}},
 
 	// {Title: "", URL: "", Fetched: time.Time{}},
 }
