@@ -61,6 +61,11 @@ var subscriptions = []models.Subscription{
 	{Title: "田端大学", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UC7sEB_ylMuHJD4TjF4Ag1nw", Fetched: time.Time{}},
 	{Title: "SPOTVNOW", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCJ-l-sMQFHogSy8KXRyMIRA", Fetched: time.Time{}},
 	{Title: "ミスターフルスイングch", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCoryrORUTuHoSkryhk0K8bA", Fetched: time.Time{}},
+	{Title: "マーケットマスターズ", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCXvjRTXoDa8tKwdkTaukGug", Fetched: time.Time{}},
+	{Title: "stockvoice", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCeW7dO9lXpvUQJcMEP1tv0g", Fetched: time.Time{}},
+	{Title: "楽待 RAKUMACHI", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCPMJKbrxtpARoTd1b49iUvA", Fetched: time.Time{}},
+	{Title: "日経CNBC", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UClVsQnfs-jKkjKmUKUHnT2g", Fetched: time.Time{}},
+
 	// {Title: "", URL: "", Fetched: time.Time{}},
 }
 
