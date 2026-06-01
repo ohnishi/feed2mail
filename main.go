@@ -68,6 +68,7 @@ var subscriptions = []models.Subscription{
 	{Title: "TBS CROSS DIG with Bloomberg", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCeCmAYh1ylwIsgGrmqaklzg", Fetched: time.Time{}},
 	{Title: "MLB Japan", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCJrBiHVYO_jiFU1avGUCm3w", Fetched: time.Time{}},
 	{Title: "佐田志歩のバリバリ伝説", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCJ1xfhiJWSsdZaH9IstBImg", Fetched: time.Time{}},
+	{Title: "Amazonで売る【公式】", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCPBWwGeO-vbrsOCGrd0_rrA", Fetched: time.Time{}},
 
 	// {Title: "", URL: "", Fetched: time.Time{}},
 }
