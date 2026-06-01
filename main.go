@@ -65,6 +65,9 @@ var subscriptions = []models.Subscription{
 	{Title: "stockvoice", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCeW7dO9lXpvUQJcMEP1tv0g", Fetched: time.Time{}},
 	{Title: "楽待 RAKUMACHI", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCPMJKbrxtpARoTd1b49iUvA", Fetched: time.Time{}},
 	{Title: "日経CNBC", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UClVsQnfs-jKkjKmUKUHnT2g", Fetched: time.Time{}},
+	{Title: "TBS CROSS DIG with Bloomberg", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCeCmAYh1ylwIsgGrmqaklzg", Fetched: time.Time{}},
+	{Title: "MLB Japan", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCJrBiHVYO_jiFU1avGUCm3w", Fetched: time.Time{}},
+	{Title: "佐田志歩のバリバリ伝説", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCJ1xfhiJWSsdZaH9IstBImg", Fetched: time.Time{}},
 
 	// {Title: "", URL: "", Fetched: time.Time{}},
 }
