@@ -97,6 +97,11 @@ func FeedToMail(filePath string, retry int) error {
 
 			_, ok := itemLinkMap[item.Link]
 			if subscription.Fetched.Before(published) && !ok {
+				// item.Link が "https://anond.hatelabo.jp" から始まる文字列ならスキップ
+				if strings.HasPrefix(item.Link, "https://anond.hatelabo.jp") {
+					continue
+				}
+
 				siteBodys = append(siteBodys, "  - "+item.Title)
 				siteBodys = append(siteBodys, "    - "+item.Link)
 				itemLinkMap[item.Link] = struct{}{}
