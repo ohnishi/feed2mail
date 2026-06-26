@@ -3,7 +3,7 @@ name: Daily Feed Execution
 on:
   schedule:
     # 毎日 4:00, 9:00, 23:00 UTC に実行（JST では 8:00, 13:00, 18:00）
-    - cron: '0 4,9,23 * * *'
+    # - cron: '0 4,9,23 * * *'
 
   # 手動実行も可能にする
   workflow_dispatch:
