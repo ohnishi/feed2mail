@@ -62,7 +62,7 @@ var subscriptions = []models.Subscription{
 	// {Title: "ミスターフルスイングch", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCoryrORUTuHoSkryhk0K8bA", Fetched: time.Time{}},
 	{Title: "マーケットマスターズ", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCXvjRTXoDa8tKwdkTaukGug", Fetched: time.Time{}},
 	{Title: "stockvoice", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCeW7dO9lXpvUQJcMEP1tv0g", Fetched: time.Time{}},
-	{Title: "楽待 RAKUMACHI", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCPMJKbrxtpARoTd1b49iUvA", Fetched: time.Time{}},
+	// {Title: "楽待 RAKUMACHI", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCPMJKbrxtpARoTd1b49iUvA", Fetched: time.Time{}},
 	{Title: "日経CNBC", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UClVsQnfs-jKkjKmUKUHnT2g", Fetched: time.Time{}},
 	{Title: "TBS CROSS DIG with Bloomberg", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCeCmAYh1ylwIsgGrmqaklzg", Fetched: time.Time{}},
 	// {Title: "MLB Japan", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCJrBiHVYO_jiFU1avGUCm3w", Fetched: time.Time{}},
@@ -71,6 +71,8 @@ var subscriptions = []models.Subscription{
 	{Title: "Amazonで売る【公式】", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCPBWwGeO-vbrsOCGrd0_rrA", Fetched: time.Time{}},
 	{Title: "ゲーハー田村", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCVWsF_cg3piJ7rRYz7bItbQ", Fetched: time.Time{}},
 	{Title: "聖女イトコイザーさん【仮】", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UC5Ou3Sy_86_pfHlZf7v-REw", Fetched: time.Time{}},
+	{Title: "聖女イトコイザーさん【仮】", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UC5Ou3Sy_86_pfHlZf7v-REw", Fetched: time.Time{}},
+	{Title: "億万株姫☆あばねちゃん", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCLd1GI9tIzrxy-3C4undbUw", Fetched: time.Time{}},
 
 	// {Title: "", URL: "", Fetched: time.Time{}},
 }
