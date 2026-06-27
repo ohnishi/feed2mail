@@ -22,6 +22,7 @@ var subscriptions = []models.Subscription{
 	{Title: "窓の杜", URL: "https://forest.watch.impress.co.jp/data/rss/1.0/wf/feed.rdf", Fetched: time.Time{}},
 	{Title: "ケータイ Watch", URL: "https://k-tai.watch.impress.co.jp/data/rss/1.0/ktw/feed.rdf", Fetched: time.Time{}},
 	{Title: "PC Watch", URL: "https://pc.watch.impress.co.jp/data/rss/1.0/pcw/feed.rdf", Fetched: time.Time{}},
+	{Title: "会社四季報オンライン", URL: "https://shikiho.toyokeizai.net/rss/news.xml", Fetched: time.Time{}},
 
 	{Title: "まめきちまめこニートの日常", URL: "https://mamekichimameko.blog.jp/index.rdf", Fetched: time.Time{}},
 	{Title: "くるねこ大和", URL: "https://rssblog.ameba.jp/kuru0214neko/rss20.xml", Fetched: time.Time{}},
