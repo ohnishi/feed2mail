@@ -69,7 +69,7 @@ func FeedToMail(filePath string, retry int) error {
 		var feed *gofeed.Feed
 		for cnt := 1; cnt <= retry; cnt++ {
 			feed, err = fp.ParseURL(subscription.URL)
-			log.Printf("parse rss url: %d, %s", cnt, subscription.URL)
+			// log.Printf("parse rss url: %d, %s", cnt, subscription.URL)
 			if err == nil {
 				time.Sleep(3 * time.Second * time.Duration(cnt)) // リトライごとに待機時間を増加
 				break
@@ -99,6 +99,11 @@ func FeedToMail(filePath string, retry int) error {
 			if subscription.Fetched.Before(published) && !ok {
 				// item.Link が "https://anond.hatelabo.jp" から始まる文字列ならスキップ
 				if strings.HasPrefix(item.Link, "https://anond.hatelabo.jp") {
+					continue
+				}
+
+				// item.Link が "https://www.youtube.com/shorts/" から始まる文字列ならスキップ
+				if strings.HasPrefix(item.Link, "https://www.youtube.com/shorts/") {
 					continue
 				}
 
