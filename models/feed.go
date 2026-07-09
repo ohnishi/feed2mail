@@ -69,12 +69,11 @@ func FeedToMail(filePath string, retry int) error {
 		var feed *gofeed.Feed
 		for cnt := 1; cnt <= retry; cnt++ {
 			feed, err = fp.ParseURL(subscription.URL)
-			// log.Printf("parse rss url: %d, %s", cnt, subscription.URL)
 			if err == nil {
 				time.Sleep(3 * time.Second * time.Duration(cnt)) // リトライごとに待機時間を増加
 				break
 			} else if cnt == retry {
-				log.Printf("HTTP request failed: %v", err)
+				log.Printf("HTTP request failed: %v %d, %s", err, cnt, subscription.URL)
 				return err
 			}
 			time.Sleep(10 * time.Second)
@@ -104,6 +103,23 @@ func FeedToMail(filePath string, retry int) error {
 
 				// item.Link が "https://www.youtube.com/shorts/" から始まる文字列ならスキップ
 				if strings.HasPrefix(item.Link, "https://www.youtube.com/shorts/") {
+					continue
+				}
+
+				// 四季報オンラインの月次報告書速報はスキップ
+				if strings.HasPrefix(item.Link, "https://shikiho.toyokeizai.net/news/") &&
+					(strings.Contains(item.Title, "に関するお知らせ") ||
+						strings.Contains(item.Title, "月次情報") ||
+						strings.Contains(item.Title, "公開いたしました") ||
+						strings.Contains(item.Title, "月次実績") ||
+						strings.Contains(item.Title, "月次報告") ||
+						strings.Contains(item.Title, "について") ||
+						strings.Contains(item.Title, "速報") ||
+						strings.Contains(item.Title, "を更新しました") ||
+						strings.Contains(item.Title, "IRレポート") ||
+						strings.Contains(item.Title, "月次レポート") ||
+						strings.Contains(item.Title, "のお知らせ") ||
+						strings.Contains(item.Title, "修正した会社はこちら")) {
 					continue
 				}
 
