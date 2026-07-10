@@ -10,7 +10,6 @@ import (
 var subscriptions = []models.Subscription{
 	{Title: "はてブ（総合）", URL: "https://b.hatena.ne.jp/hotentry.rss", Fetched: time.Time{}},
 	{Title: "はてブ（テクノロジー）", URL: "https://b.hatena.ne.jp/hotentry/it.rss", Fetched: time.Time{}},
-	{Title: "ITmedia", URL: "https://rss.itmedia.co.jp/rss/2.0/topstory.xml", Fetched: time.Time{}},
 	{Title: "Zenn", URL: "https://zenn.dev/feed", Fetched: time.Time{}},
 	{Title: "Publickey", URL: "https://www.publickey1.jp/atom.xml", Fetched: time.Time{}},
 	{Title: "四季報オンライン", URL: "https://shikiho.toyokeizai.net/rss/news.xml", Fetched: time.Time{}},

@@ -119,6 +119,8 @@ func FeedToMail(filePath string, retry int) error {
 						strings.Contains(item.Title, "IRレポート") ||
 						strings.Contains(item.Title, "月次レポート") ||
 						strings.Contains(item.Title, "のお知らせ") ||
+						strings.Contains(item.Title, "月次業績のご報告") ||
+						strings.Contains(item.Title, "月次売上高前年比推移") ||
 						strings.Contains(item.Title, "修正した会社はこちら")) {
 					continue
 				}
