@@ -113,14 +113,19 @@ func FeedToMail(filePath string, retry int) error {
 						strings.Contains(item.Title, "公開いたしました") ||
 						strings.Contains(item.Title, "月次実績") ||
 						strings.Contains(item.Title, "月次報告") ||
+						strings.Contains(item.Title, "月次動向") ||
 						strings.Contains(item.Title, "について") ||
 						strings.Contains(item.Title, "速報") ||
 						strings.Contains(item.Title, "を更新しました") ||
+						strings.Contains(item.Title, "を更新いたしました") ||
+						strings.Contains(item.Title, "を掲載しました") ||
 						strings.Contains(item.Title, "IRレポート") ||
 						strings.Contains(item.Title, "月次レポート") ||
 						strings.Contains(item.Title, "のお知らせ") ||
 						strings.Contains(item.Title, "月次業績のご報告") ||
+						strings.Contains(item.Title, "月次売上高の状況") ||
 						strings.Contains(item.Title, "月次売上高前年比推移") ||
+						strings.Contains(item.Title, "月次売上高前年比較表") ||
 						strings.Contains(item.Title, "修正した会社はこちら")) {
 					continue
 				}
