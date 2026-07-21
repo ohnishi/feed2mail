@@ -12,8 +12,8 @@ var subscriptions = []models.Subscription{
 	{Title: "はてブ（テクノロジー）", URL: "https://b.hatena.ne.jp/hotentry/it.rss", Fetched: time.Time{}},
 	{Title: "Zenn", URL: "https://zenn.dev/feed", Fetched: time.Time{}},
 	{Title: "Publickey", URL: "https://www.publickey1.jp/atom.xml", Fetched: time.Time{}},
-	{Title: "窓の杜", URL: "https://forest.watch.impress.co.jp/data/rss/1.0/wf/feed.rdf", Fetched: time.Time{}},
-	{Title: "四季報オンライン", URL: "https://shikiho.toyokeizai.net/rss/news.xml", Fetched: time.Time{}},
+	// {Title: "窓の杜", URL: "https://forest.watch.impress.co.jp/data/rss/1.0/wf/feed.rdf", Fetched: time.Time{}},
+	// {Title: "四季報オンライン", URL: "https://shikiho.toyokeizai.net/rss/news.xml", Fetched: time.Time{}},
 
 	// {Title: "", URL: "", Fetched: time.Time{}},
 }
