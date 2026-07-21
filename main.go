@@ -15,6 +15,7 @@ var subscriptions = []models.Subscription{
 	{Title: "Publickey", URL: "https://www.publickey1.jp/atom.xml", Fetched: time.Time{}},
 	{Title: "Rebuild Podcast", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCty73f38mfBICYNZAP839fA", Fetched: time.Time{}},
 	{Title: "ムーザルちゃんねる", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCLPHXwLp90A5R69Eltxo-sg", Fetched: time.Time{}},
+	{Title: "耳で学ぶAI", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCvOAAoU3Q8hBRA3qmHSKaVg", Fetched: time.Time{}},
 
 	{Title: "窓の杜", URL: "https://forest.watch.impress.co.jp/data/rss/1.0/wf/feed.rdf", Fetched: time.Time{}},
 	{Title: "AI Watch", URL: "https://ai.watch.impress.co.jp/data/rss/1.0/aiw/feed.rdf", Fetched: time.Time{}},
