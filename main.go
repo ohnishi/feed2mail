@@ -24,6 +24,7 @@ var subscriptions = []models.Subscription{
 	{Title: "くるねこ大和", URL: "https://rssblog.ameba.jp/kuru0214neko/rss20.xml", Fetched: time.Time{}},
 	{Title: "ワンパンマン", URL: "https://tonarinoyj.jp/rss/series/13932016480028984490", Fetched: time.Time{}},
 	{Title: "ダンダダン", URL: "https://shonenjumpplus.com/rss/series/3269632237310729745", Fetched: time.Time{}},
+	{Title: "聖女イトコイザーさん【仮】", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UC5Ou3Sy_86_pfHlZf7v-REw", Fetched: time.Time{}},
 
 	{Title: "物販NAVI", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCMO-lX7Y0K7c-BaV9RatboQ", Fetched: time.Time{}},
 	{Title: "中古カメラ現物投資家 船田ひろし", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCcph2C76gdSHXUbd3wooNfQ", Fetched: time.Time{}},
@@ -40,8 +41,10 @@ var subscriptions = []models.Subscription{
 	{Title: "楽待 RAKUMACHI", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCPMJKbrxtpARoTd1b49iUvA", Fetched: time.Time{}},
 	{Title: "日経CNBC", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UClVsQnfs-jKkjKmUKUHnT2g", Fetched: time.Time{}},
 	{Title: "TBS CROSS DIG with Bloomberg", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCeCmAYh1ylwIsgGrmqaklzg", Fetched: time.Time{}},
+	{Title: "佐田志歩のバリバリ伝説", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCJ1xfhiJWSsdZaH9IstBImg", Fetched: time.Time{}},
+	{Title: "", URL: "", Fetched: time.Time{}},
 
-	{Title: "聖女イトコイザーさん【仮】", URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UC5Ou3Sy_86_pfHlZf7v-REw", Fetched: time.Time{}},
+	{Title: "四季報オンライン", URL: "https://shikiho.toyokeizai.net/rss/news.xml", Fetched: time.Time{}},
 
 	// {Title: "", URL: "", Fetched: time.Time{}},
 }
