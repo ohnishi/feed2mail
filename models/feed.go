@@ -21,6 +21,15 @@ type Subscription struct {
 	Fetched time.Time `json:"fetched"`
 }
 
+const (
+	chromeUserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+	fetchTimeout    = 30 * time.Second
+	retryInterval   = 4 * time.Second
+	// politeDelay はフィード間の待機時間です。
+	// YouTube のフィードは短時間に連続アクセスすると 404/500 を返すことがあるため、間隔を空ける。
+	politeDelay = 2 * time.Second
+)
+
 type userAgentTransport struct {
 	rt http.RoundTripper
 }
@@ -28,7 +37,7 @@ type userAgentTransport struct {
 func (u *userAgentTransport) RoundTrip(req *http.Request) (*http.Response, error) {
 	req = req.Clone(req.Context())
 	// Chromeブラウザからのアクセスであるように偽装するためのヘッダー群
-	req.Header.Set("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36")
+	req.Header.Set("User-Agent", chromeUserAgent)
 	req.Header.Set("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7")
 	req.Header.Set("Accept-Language", "ja,en-US;q=0.9,en;q=0.8")
 	req.Header.Set("Sec-Ch-Ua", `"Chromium";v="122", "Not(A:Brand";v="24", "Google Chrome";v="122"`)
@@ -48,54 +57,50 @@ func FeedToMail(filePath string, retry int) error {
 		return err
 	}
 
-	// 🌟 修正点 1: タイムアウト設定を持つカスタムクライアントを作成 🌟
-	// 接続確立から応答受信までの合計タイムアウトを30秒に設定しつつ、Chromeブラウザからのアクセスに偽装する
+	// 接続確立から応答受信までの合計タイムアウトを設定しつつ、Chromeブラウザからのアクセスに偽装する
 	httpClient := &http.Client{
-		Timeout: 30 * time.Second,
+		Timeout: fetchTimeout,
 		Transport: &userAgentTransport{
 			rt: http.DefaultTransport,
 		},
 	}
 
 	fp := gofeed.NewParser()
-	fp.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+	fp.UserAgent = chromeUserAgent
 	fp.Client = httpClient // カスタムクライアントをParserに設定
 
 	var bodys []string
+	var failed []string
 	var itemLinkMap = make(map[string]struct{})
 
 	for i, subscription := range subscriptions {
-		var latest time.Time
-		var feed *gofeed.Feed
-		for cnt := 1; cnt <= retry; cnt++ {
-			feed, err = fp.ParseURL(subscription.URL)
-			if err == nil {
-				time.Sleep(3 * time.Second * time.Duration(cnt)) // リトライごとに待機時間を増加
-				break
-			} else if cnt == retry {
-				log.Printf("HTTP request failed: %v %d, %s", err, cnt, subscription.URL)
-				return err
-			}
-			time.Sleep(10 * time.Second)
+		if i > 0 {
+			time.Sleep(politeDelay)
 		}
 
+		feed, err := fetchFeed(fp, subscription.URL, retry)
+		if err != nil {
+			// 1つのフィードの失敗で全体を止めず、取得できた分だけ通知する。
+			// Fetched も更新しないので、次回の実行で取りこぼしを拾い直せる。
+			log.Printf("skip %s: %v", subscription.Title, err)
+			failed = append(failed, subscription.Title)
+			continue
+		}
+
+		var latest time.Time
 		siteBodys := []string{subscription.Title}
 		for _, item := range feed.Items {
-			if item.Published == "" {
+			published, ok := publishedAt(item)
+			if !ok {
 				continue
-			}
-
-			published, err := parseLocal(item.Published)
-			if err != nil {
-				return err
 			}
 
 			if latest.Before(published) {
 				latest = published
 			}
 
-			_, ok := itemLinkMap[item.Link]
-			if subscription.Fetched.Before(published) && !ok {
+			_, sent := itemLinkMap[item.Link]
+			if subscription.Fetched.Before(published) && !sent {
 				// item.Link が "https://anond.hatelabo.jp" から始まる文字列ならスキップ
 				if strings.HasPrefix(item.Link, "https://anond.hatelabo.jp") {
 					continue
@@ -103,31 +108,6 @@ func FeedToMail(filePath string, retry int) error {
 
 				// item.Link が "https://www.youtube.com/shorts/" から始まる文字列ならスキップ
 				if strings.HasPrefix(item.Link, "https://www.youtube.com/shorts/") {
-					continue
-				}
-
-				// 四季報オンラインの月次報告書速報はスキップ
-				if strings.HasPrefix(item.Link, "https://shikiho.toyokeizai.net/news/") &&
-					(strings.Contains(item.Title, "に関するお知らせ") ||
-						strings.Contains(item.Title, "月次情報") ||
-						strings.Contains(item.Title, "公開いたしました") ||
-						strings.Contains(item.Title, "月次実績") ||
-						strings.Contains(item.Title, "月次報告") ||
-						strings.Contains(item.Title, "月次動向") ||
-						strings.Contains(item.Title, "について") ||
-						strings.Contains(item.Title, "速報") ||
-						strings.Contains(item.Title, "を更新しました") ||
-						strings.Contains(item.Title, "を更新いたしました") ||
-						strings.Contains(item.Title, "を掲載しました") ||
-						strings.Contains(item.Title, "IRレポート") ||
-						strings.Contains(item.Title, "月次レポート") ||
-						strings.Contains(item.Title, "のお知らせ") ||
-						strings.Contains(item.Title, "月次業績のご報告") ||
-						strings.Contains(item.Title, "月次売上高の状況") ||
-						strings.Contains(item.Title, "月次売上高前年比推移") ||
-						strings.Contains(item.Title, "月次売上高前年比較表") ||
-						strings.Contains(item.Title, "売上前年比月次推移") ||
-						strings.Contains(item.Title, "修正した会社はこちら")) {
 					continue
 				}
 
@@ -145,6 +125,16 @@ func FeedToMail(filePath string, retry int) error {
 
 		if subscription.Fetched.Before(latest) {
 			subscriptions[i].Fetched = latest
+		}
+	}
+
+	if len(failed) > 0 {
+		if len(bodys) > 0 {
+			bodys = append(bodys, "")
+		}
+		bodys = append(bodys, "取得に失敗したフィード:")
+		for _, title := range failed {
+			bodys = append(bodys, "  - "+title)
 		}
 	}
 
@@ -210,17 +200,36 @@ func toJSON(r interface{}) (string, error) {
 	return fmt.Sprintf("%s\n", jsonStr), nil
 }
 
-func parseLocal(value string) (t time.Time, err error) {
-	for _, layout := range []string{time.RFC1123, time.RFC3339, time.RFC1123Z} {
-		t, err = time.ParseInLocation(layout, value, time.Local)
+// fetchFeed はフィードを取得します。失敗した場合は待機時間を増やしながら retry 回まで再試行します。
+func fetchFeed(fp *gofeed.Parser, url string, retry int) (*gofeed.Feed, error) {
+	if retry < 1 {
+		retry = 1
+	}
+
+	var err error
+	for cnt := 1; cnt <= retry; cnt++ {
+		var feed *gofeed.Feed
+		feed, err = fp.ParseURL(url)
 		if err == nil {
-			break
+			return feed, nil
+		}
+		if cnt < retry {
+			time.Sleep(retryInterval * time.Duration(cnt)) // リトライごとに待機時間を増加
 		}
 	}
-	if err != nil {
-		return time.Time{}, errors.Wrapf(err, "cannot parse as %q", time.Local)
+	return nil, errors.Wrapf(err, "failed to fetch feed: %s", url)
+}
+
+// publishedAt は記事の公開時刻を返します。
+// gofeed がパース済みの値を使い、published を持たないフィードでは updated で代用します。
+func publishedAt(item *gofeed.Item) (time.Time, bool) {
+	if item.PublishedParsed != nil {
+		return *item.PublishedParsed, true
 	}
-	return t, nil
+	if item.UpdatedParsed != nil {
+		return *item.UpdatedParsed, true
+	}
+	return time.Time{}, false
 }
 
 // FileExists はファイルが存在するかどうかを確認します。
