@@ -1,45 +1,53 @@
 name: Daily Feed Execution
 
 on:
-  # schedule:
-    # 毎日 3:00, 9:00, 23:00 UTC に実行（JST では 12:00, 18:00, 8:00）
-    # - cron: '0 3,9,23 * * *'
+  schedule:
+    # 毎日 3:00, 9:00, 23:00 UTC に実行（JST では 12:00, 18:00, 翌 8:00）
+    - cron: '0 3,9,23 * * *'
 
   # 手動実行も可能にする
   workflow_dispatch:
 
-# cache/fetched.jsonl への push が競合しないよう、同時実行を1つに制限する
+# 状態ファイルへの push が競合しないよう、同時実行を1つに制限する
 concurrency:
   group: daily-feed
   cancel-in-progress: false
 
+# 状態ファイルのコミットに必要な最小限の権限だけを与える
+permissions:
+  contents: write
+
 jobs:
   run-go-script:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Set up Go
-        uses: actions/setup-go@v4
+        uses: actions/setup-go@v5
         with:
-          go-version: '1.24'  # 必要に応じてGoのバージョンを変更
+          go-version-file: go.mod
+          cache: true
 
-      - name: Install dependencies
-        run: go mod download
+      - name: Run tests
+        run: go test ./...
 
       - name: Run Feed script
         run: go run .
         env:
           MAIL_APIKEY: ${{ secrets.MAIL_APIKEY }}
+          MAIL_TO: ${{ secrets.MAIL_TO }}
 
       - name: Commit changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add cache/fetched.jsonl
+          git add cache/
           git diff --staged --quiet && exit 0
-          git commit -m "Update fetched.jsonl from run ${{ github.run_number }}"
+          git commit -m "Update feed state from run ${{ github.run_number }}"
+          # 他の実行が先に push していても取り込んでから押し込む
           git pull --rebase
           git push
