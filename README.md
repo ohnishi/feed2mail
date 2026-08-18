@@ -1,7 +1,8 @@
 # feed2mail
 
 購読中の RSS/Atom フィードを巡回し、新着記事を Resend 経由でメール通知します。
-GitHub Actions で 1 日 3 回（JST 8:00 / 12:00 / 18:00）自動実行されます。
+GitHub Actions から手動で実行します（Actions タブ → Daily Feed Execution → Run workflow）。
+定期実行したい場合は [daily.yml](.github/workflows/daily.yml) の `schedule` のコメントを外してください。
 
 ## 実行
 
