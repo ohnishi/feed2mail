@@ -8,8 +8,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ohnishi/feed/internal/feed"
-	"github.com/ohnishi/feed/internal/store"
+	"github.com/ohnishi/feed2mail/internal/feed"
+	"github.com/ohnishi/feed2mail/internal/store"
 )
 
 var fixedNow = time.Date(2026, 8, 18, 12, 0, 0, 0, time.UTC)

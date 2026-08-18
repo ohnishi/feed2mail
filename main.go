@@ -7,11 +7,11 @@ import (
 	"log"
 	"time"
 
-	"github.com/ohnishi/feed/internal/app"
-	"github.com/ohnishi/feed/internal/config"
-	"github.com/ohnishi/feed/internal/feed"
-	"github.com/ohnishi/feed/internal/notify"
-	"github.com/ohnishi/feed/internal/store"
+	"github.com/ohnishi/feed2mail/internal/app"
+	"github.com/ohnishi/feed2mail/internal/config"
+	"github.com/ohnishi/feed2mail/internal/feed"
+	"github.com/ohnishi/feed2mail/internal/notify"
+	"github.com/ohnishi/feed2mail/internal/store"
 )
 
 func main() {

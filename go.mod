@@ -1,4 +1,4 @@
-module github.com/ohnishi/feed
+module github.com/ohnishi/feed2mail
 
 go 1.24
 

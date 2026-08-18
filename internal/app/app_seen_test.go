@@ -7,8 +7,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ohnishi/feed/internal/feed"
-	"github.com/ohnishi/feed/internal/store"
+	"github.com/ohnishi/feed2mail/internal/feed"
+	"github.com/ohnishi/feed2mail/internal/store"
 )
 
 // runner は同じ状態ファイルを使い回して複数回の実行を再現します。

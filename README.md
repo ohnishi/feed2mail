@@ -1,4 +1,4 @@
-# feed
+# feed2mail
 
 購読中の RSS/Atom フィードを巡回し、新着記事を Resend 経由でメール通知します。
 GitHub Actions で 1 日 3 回（JST 8:00 / 12:00 / 18:00）自動実行されます。

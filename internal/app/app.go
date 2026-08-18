@@ -8,10 +8,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/ohnishi/feed/internal/feed"
-	"github.com/ohnishi/feed/internal/notify"
-	"github.com/ohnishi/feed/internal/render"
-	"github.com/ohnishi/feed/internal/store"
+	"github.com/ohnishi/feed2mail/internal/feed"
+	"github.com/ohnishi/feed2mail/internal/notify"
+	"github.com/ohnishi/feed2mail/internal/render"
+	"github.com/ohnishi/feed2mail/internal/store"
 )
 
 // App は 1 回の実行に必要な依存をまとめたものです。
