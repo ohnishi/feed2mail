@@ -22,6 +22,11 @@ type App struct {
 	Notifier notify.Notifier
 	// StatePath は購読状態を保存する JSONL のパスです。
 	StatePath string
+	// SeenPath は既読リンクを保存する JSONL のパスです。
+	SeenPath string
+	// SeenRetention は既読リンクを保持する期間です。
+	// この期間より古い公開時刻の記事は新着とみなしません。
+	SeenRetention time.Duration
 	// Subject は通知メールの件名です。
 	Subject string
 	// ExcludePrefixes はこの接頭辞で始まるリンクを通知対象から除外します。
@@ -50,37 +55,49 @@ func (a *App) now() time.Time {
 	return time.Now()
 }
 
-// Run は購読状態を読み込み、各フィードの新着を収集して通知し、状態を書き戻します。
+// Run は購読状態と既読リンクを読み込み、各フィードの新着を収集して通知し、状態を書き戻します。
 func (a *App) Run(ctx context.Context) error {
 	subscriptions, err := store.LoadSubscriptions(a.StatePath)
 	if err != nil {
 		return err
 	}
-
-	sections, failed := a.collect(ctx, subscriptions)
-
-	body := render.Body(sections, failed)
-	if body == "" {
-		// 新着も失敗もない場合は空メールを送らない。
-		log.Print("no new items; skip notification")
-		return store.SaveSubscriptions(a.StatePath, subscriptions)
-	}
-
-	if err := a.Notifier.Notify(ctx, a.Subject, body); err != nil {
-		// 通知に失敗したときは状態を進めない。次回の実行で取りこぼしを拾い直せる。
+	seen, err := store.LoadSeen(a.SeenPath)
+	if err != nil {
 		return err
 	}
 
+	sections, failed := a.collect(ctx, subscriptions, seen)
+
+	body := render.Body(sections, failed)
+	if body != "" {
+		if err := a.Notifier.Notify(ctx, a.Subject, body); err != nil {
+			// 通知に失敗したときは状態を進めない。次回の実行で取りこぼしを拾い直せる。
+			return err
+		}
+	} else {
+		// 新着も失敗もない場合は空メールを送らない。
+		log.Print("no new items; skip notification")
+	}
+
+	return a.save(subscriptions, seen)
+}
+
+// save は既読リンクを保持期間で切り詰めてから両方の状態ファイルを書き出します。
+func (a *App) save(subscriptions []store.Subscription, seen *store.SeenStore) error {
+	if pruned := seen.Prune(a.now().Add(-a.SeenRetention)); pruned > 0 {
+		log.Printf("pruned %d seen links older than %v", pruned, a.SeenRetention)
+	}
+	if err := store.SaveSeen(a.SeenPath, seen); err != nil {
+		return err
+	}
 	return store.SaveSubscriptions(a.StatePath, subscriptions)
 }
 
 // collect は各フィードを順に取得し、新着セクションと失敗フィード名を返します。
 // subscriptions の Fetched は取得できたフィードについてのみ更新されます。
-func (a *App) collect(ctx context.Context, subscriptions []store.Subscription) ([]render.Section, []string) {
+func (a *App) collect(ctx context.Context, subscriptions []store.Subscription, seen *store.SeenStore) ([]render.Section, []string) {
 	var sections []render.Section
 	var failed []string
-	// 同じリンクが複数のフィードに現れても 1 度しか通知しない。
-	seen := make(map[string]struct{})
 
 	for i, subscription := range subscriptions {
 		if i > 0 {
@@ -109,9 +126,16 @@ func (a *App) collect(ctx context.Context, subscriptions []store.Subscription) (
 }
 
 // selectItems は 1 フィードから未通知の新着を抜き出し、併せて最新の公開時刻を返します。
-// 通知対象に選んだリンクは seen に記録されます。
-func (a *App) selectItems(subscription store.Subscription, fetched *feed.Feed, seen map[string]struct{}) (render.Section, time.Time) {
+// 評価したリンクは seen に記録され、以降の実行でも同じフィードの中でも重複しません。
+//
+// そのフィードの既読記録がまだ無い場合（新規購読、または既読方式への移行直後）は、
+// 過去記事を一斉に通知してしまわないよう Fetched より新しいものだけを新着とみなし、
+// 残りは既読として記録するだけにとどめます。
+func (a *App) selectItems(subscription store.Subscription, fetched *feed.Feed, seen *store.SeenStore) (render.Section, time.Time) {
 	now := a.now()
+	floor := now.Add(-a.SeenRetention)
+	bootstrapped := seen.HasSource(subscription.URL)
+
 	section := render.Section{Title: subscription.Title}
 	var latest time.Time
 
@@ -130,18 +154,25 @@ func (a *App) selectItems(subscription store.Subscription, fetched *feed.Feed, s
 			latest = item.Published
 		}
 
-		if !subscription.Fetched.Before(item.Published) {
-			continue
-		}
-		if _, dup := seen[item.Link]; dup {
-			continue
-		}
+		// 除外対象は既読にも記録しない。件数が多く、状態ファイルを無駄に太らせるため。
 		if a.excluded(item.Link) {
+			continue
+		}
+		// 保持期間より古い記事は、既読記録が消えた後も新着として復活させない。
+		if item.Published.Before(floor) {
+			continue
+		}
+		if seen.Has(item.Link) {
+			continue
+		}
+
+		isNew := bootstrapped || subscription.Fetched.Before(item.Published)
+		seen.Add(item.Link, subscription.URL, item.Published, now)
+		if !isNew {
 			continue
 		}
 
 		section.Items = append(section.Items, render.Item{Title: item.Title, Link: item.Link})
-		seen[item.Link] = struct{}{}
 	}
 
 	return section, latest

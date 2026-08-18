@@ -37,6 +37,8 @@ func run(configPath string) error {
 		Fetcher:         feed.NewGofeedFetcher(cfg.MaxRetry),
 		Notifier:        notify.NewResend(cfg.APIKey, cfg.Mail.From, cfg.Mail.To, cfg.MaxRetry),
 		StatePath:       cfg.StatePath,
+		SeenPath:        cfg.SeenPath,
+		SeenRetention:   cfg.SeenRetention,
 		Subject:         cfg.Mail.Subject,
 		ExcludePrefixes: cfg.ExcludePrefixes,
 		PoliteDelay:     cfg.PoliteDelay,

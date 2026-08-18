@@ -60,6 +60,8 @@ func newTestApp(t *testing.T, subs []store.Subscription, fetcher *fakeFetcher, n
 		Fetcher:         fetcher,
 		Notifier:        notifier,
 		StatePath:       path,
+		SeenPath:        filepath.Join(filepath.Dir(path), "seen.jsonl"),
+		SeenRetention:   30 * 24 * time.Hour,
 		Subject:         "feed更新通知",
 		ExcludePrefixes: []string{"https://anond.hatelabo.jp"},
 		PoliteDelay:     2 * time.Second,
