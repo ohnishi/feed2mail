@@ -8,6 +8,8 @@ import (
 	"github.com/resend/resend-go/v2"
 )
 
+const mailRetryInterval = 10 * time.Second
+
 func mailNotifyByResend(msg string, retry int) error {
 	apiKey := os.Getenv("MAIL_APIKEY")
 	sendFrom := "feed@resend.dev"
@@ -22,15 +24,20 @@ func mailNotifyByResend(msg string, retry int) error {
 		Text:    msg,
 	}
 
-	for cnt := 1; cnt <= retry; cnt++ {
-		_, err := client.Emails.Send(params)
-		if err == nil {
-			break
-		} else if cnt == retry {
-			log.Printf("mail send failed: %v", err)
-			return err
-		}
-		time.Sleep(10 * time.Second)
+	// retry が 0 以下でも必ず 1 回は送信を試みる。
+	if retry < 1 {
+		retry = 1
 	}
-	return nil
+
+	var err error
+	for cnt := 1; cnt <= retry; cnt++ {
+		if _, err = client.Emails.Send(params); err == nil {
+			return nil
+		}
+		if cnt < retry {
+			time.Sleep(mailRetryInterval * time.Duration(cnt))
+		}
+	}
+	log.Printf("mail send failed after %d attempts: %v", retry, err)
+	return err
 }

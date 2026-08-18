@@ -1,9 +1,8 @@
-// Package models は、このプログラムのエントリポイントを提供します。
+// Package models は、フィードの取得・重複排除・メール通知・状態の永続化を提供します。
 package models
 
 import (
 	"encoding/json"
-	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -69,7 +68,7 @@ func FeedToMail(filePath string, retry int) error {
 	fp.UserAgent = chromeUserAgent
 	fp.Client = httpClient // カスタムクライアントをParserに設定
 
-	var bodys []string
+	var bodies []string
 	var failed []string
 	var itemLinkMap = make(map[string]struct{})
 
@@ -87,11 +86,18 @@ func FeedToMail(filePath string, retry int) error {
 			continue
 		}
 
+		now := time.Now()
 		var latest time.Time
-		siteBodys := []string{subscription.Title}
+		siteBodies := []string{subscription.Title}
 		for _, item := range feed.Items {
 			published, ok := publishedAt(item)
 			if !ok {
+				continue
+			}
+
+			// 未来日付のアイテムで Fetched が先に進むと、以降の新着を恒久的に
+			// 取りこぼすため、現在時刻を超える公開時刻は latest に反映しない。
+			if published.After(now) {
 				continue
 			}
 
@@ -111,16 +117,16 @@ func FeedToMail(filePath string, retry int) error {
 					continue
 				}
 
-				siteBodys = append(siteBodys, "  - "+item.Title)
-				siteBodys = append(siteBodys, "    - "+item.Link)
+				siteBodies = append(siteBodies, "  - "+item.Title)
+				siteBodies = append(siteBodies, "    - "+item.Link)
 				itemLinkMap[item.Link] = struct{}{}
 			}
 		}
-		if len(siteBodys) > 1 {
-			if len(bodys) > 0 {
-				bodys = append(bodys, "")
+		if len(siteBodies) > 1 {
+			if len(bodies) > 0 {
+				bodies = append(bodies, "")
 			}
-			bodys = append(bodys, siteBodys...)
+			bodies = append(bodies, siteBodies...)
 		}
 
 		if subscription.Fetched.Before(latest) {
@@ -129,17 +135,22 @@ func FeedToMail(filePath string, retry int) error {
 	}
 
 	if len(failed) > 0 {
-		if len(bodys) > 0 {
-			bodys = append(bodys, "")
+		if len(bodies) > 0 {
+			bodies = append(bodies, "")
 		}
-		bodys = append(bodys, "取得に失敗したフィード:")
+		bodies = append(bodies, "取得に失敗したフィード:")
 		for _, title := range failed {
-			bodys = append(bodys, "  - "+title)
+			bodies = append(bodies, "  - "+title)
 		}
 	}
 
-	err = mailNotifyByResend(strings.Join(bodys, "\n"), retry)
-	if err != nil {
+	// 新着も失敗もない場合は空メールを送らない。
+	if len(bodies) == 0 {
+		log.Print("no new items; skip notification")
+		return WriteSubscription(filePath, subscriptions)
+	}
+
+	if err := mailNotifyByResend(strings.Join(bodies, "\n"), retry); err != nil {
 		return err
 	}
 
@@ -156,11 +167,10 @@ func WriteSubscription(path string, subscriptions []Subscription) error {
 	}
 	defer f.Close()
 
+	enc := json.NewEncoder(f)
 	for _, subscription := range subscriptions {
-
-		err = appendOutFile(f, subscription)
-		if err != nil {
-			return err
+		if err := enc.Encode(subscription); err != nil {
+			return errors.Wrapf(err, "failed to write subscription: %s", subscription.URL)
 		}
 	}
 	if err := f.Sync(); err != nil {
@@ -171,7 +181,7 @@ func WriteSubscription(path string, subscriptions []Subscription) error {
 
 func createOutFile(path string) (*os.File, error) {
 	dir := filepath.Dir(path)
-	err := os.MkdirAll(dir, os.ModePerm)
+	err := os.MkdirAll(dir, 0o755)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to create output directory: %s", dir)
 	}
@@ -180,24 +190,6 @@ func createOutFile(path string) (*os.File, error) {
 		return nil, errors.Wrapf(err, "failed to open file: %s", path)
 	}
 	return f, nil
-}
-
-func appendOutFile(f *os.File, v interface{}) error {
-	jsonl, err := toJSON(v)
-	if err != nil {
-		return err
-	}
-	if _, err := f.Write([]byte(jsonl)); err != nil {
-		return errors.Wrapf(err, "failed to write line: %s", jsonl)
-	}
-	return nil
-}
-func toJSON(r interface{}) (string, error) {
-	jsonStr, err := json.Marshal(r)
-	if err != nil {
-		return "", errors.Wrapf(err, "could not marshal: %v", r)
-	}
-	return fmt.Sprintf("%s\n", jsonStr), nil
 }
 
 // fetchFeed はフィードを取得します。失敗した場合は待機時間を増やしながら retry 回まで再試行します。
@@ -232,21 +224,13 @@ func publishedAt(item *gofeed.Item) (time.Time, bool) {
 	return time.Time{}, false
 }
 
-// FileExists はファイルが存在するかどうかを確認します。
-func FileExists(filename string) bool {
-	_, err := os.Stat(filename)
-	if os.IsNotExist(err) {
-		return false
-	}
-	return err == nil
-}
-
+// ReadSubscriptions は JSONL 形式の購読リストを読み込みます。
+// ファイルが存在しない場合は空のリストを返します。
 func ReadSubscriptions(filePath string) ([]Subscription, error) {
-	if !FileExists(filePath) {
+	f, err := os.Open(filePath)
+	if errors.Is(err, os.ErrNotExist) {
 		return nil, nil
 	}
-
-	f, err := os.Open(filePath)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to open file: %s", filePath)
 	}
