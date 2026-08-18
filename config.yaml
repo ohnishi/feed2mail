@@ -1,0 +1,65 @@
+# フィード通知の設定。
+# 宛先 (MAIL_TO) と API キー (MAIL_APIKEY) はリポジトリに残さないよう環境変数から読みます。
+
+mail:
+  subject: "feed更新通知"
+  from: "feed@resend.dev"
+
+# 状態ファイル。いずれも 1 レコード 1 行の JSONL。
+state_path: cache/fetched.jsonl
+seen_path: cache/seen.jsonl
+
+# 既読リンクの保持期間。長いほど取りこぼしに強いが、seen.jsonl も比例して大きくなる。
+seen_retention: 720h # 30 日
+
+# 新規購読フィードで初回に遡る期間。
+new_subscription_lookback: 24h
+
+# フィード間の待機時間。YouTube は連続アクセスで 404/500 を返すことがあるため空ける。
+polite_delay: 2s
+
+# フィード取得・メール送信の最大試行回数。
+max_retry: 5
+
+# この接頭辞で始まるリンクは通知しない。
+exclude_prefixes:
+  - "https://anond.hatelabo.jp"
+  - "https://www.youtube.com/shorts/"
+
+subscriptions:
+  - title: "はてブ（総合）"
+    url: "https://b.hatena.ne.jp/hotentry.rss"
+  - title: "はてブ（テクノロジー）"
+    url: "https://b.hatena.ne.jp/hotentry/it.rss"
+
+  - title: "Zenn"
+    url: "https://zenn.dev/feed"
+  - title: "Publickey"
+    url: "https://www.publickey1.jp/atom.xml"
+
+  - title: "窓の杜"
+    url: "https://forest.watch.impress.co.jp/data/rss/1.0/wf/feed.rdf"
+  - title: "AI Watch"
+    url: "https://ai.watch.impress.co.jp/data/rss/1.0/aiw/feed.rdf"
+
+  - title: "まめきちまめこニートの日常"
+    url: "https://mamekichimameko.blog.jp/index.rdf"
+  - title: "くるねこ大和"
+    url: "https://rssblog.ameba.jp/kuru0214neko/rss20.xml"
+  - title: "ワンパンマン"
+    url: "https://tonarinoyj.jp/rss/series/13932016480028984490"
+  - title: "ダンダダン"
+    url: "https://shonenjumpplus.com/rss/series/3269632237310729745"
+
+  - title: "物販NAVI"
+    url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCMO-lX7Y0K7c-BaV9RatboQ"
+  - title: "中古カメラ現物投資家 船田ひろし"
+    url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCcph2C76gdSHXUbd3wooNfQ"
+  - title: "脱サラした男のネットショップな日常"
+    url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCfCkw1ugUhc9Nw_wu1cKHpw"
+  - title: "かわしま＠中国輸入"
+    url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCW_Ey8M8I3o1JCB2OyCYzHA"
+  - title: "RAKUMART"
+    url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCgW9fypC1UpPsIF1m4Ph5eA"
+  - title: "Amazonで売る【公式】"
+    url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCPBWwGeO-vbrsOCGrd0_rrA"
